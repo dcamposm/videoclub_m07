@@ -11,7 +11,7 @@
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+    return 'Pantalla principal';
 });
 
 Route::get('/login', function()
