@@ -2,6 +2,7 @@
 
 @section('content')
 
-    Pantalla principal
+    Listado películas
 
 @stop
+

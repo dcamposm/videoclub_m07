@@ -2,6 +2,6 @@
 
 @section('content')
 
-    Pantalla principal
+    Añadir película
 
 @stop

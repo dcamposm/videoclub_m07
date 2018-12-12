@@ -2,6 +2,6 @@
 
 @section('content')
 
-    Pantalla principal
+    Vista detalle película {{ $id }}
 
 @stop
