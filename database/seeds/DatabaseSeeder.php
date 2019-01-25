@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 use App\Movie;
 
 class DatabaseSeeder extends Seeder
@@ -23,18 +24,20 @@ class DatabaseSeeder extends Seeder
     public function seedUsers()
     {
         DB::table('users')->delete();
-        $user = new User;
-       
+        
+        $user = new User;       
         $user->name = 'Deme';
         $user->email = 'deme@dem.dem';
         $user->password = bcrypt('demcam');
         $user->save();
         
+        $user = new User;
         $user->name = 'Albert';
         $user->email = 'alb@alb.alb';
         $user->password = bcrypt('albmar');
         $user->save();
         
+        $user = new User;
         $user->name = 'Denis';
         $user->email = 'denis@den.den';
         $user->password = bcrypt('denper');
