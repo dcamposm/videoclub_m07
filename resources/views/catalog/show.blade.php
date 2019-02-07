@@ -15,7 +15,7 @@
         <h3>Any: {{$pelicula->year}}</h3>
         <h4>Director: {{$pelicula->director}}</h4>
         <p><strong>Resumen: </strong> {{$pelicula->synopsis}}</p>
-        @if( $pelicula->rented == 1 )
+        @if( $pelicula->rented == 0 )
             <p><strong>Estado: </strong>Pelicula disponible</p>
             <form action="{{action('CatalogController@putRent', $pelicula->id)}}" 
                 method="POST" style="display:inline">

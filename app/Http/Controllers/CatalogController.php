@@ -56,17 +56,17 @@ class CatalogController extends Controller
     
     public function putRent($id){
         $movie = Movie::findOrFail($id);
-        $movie->rented = false;
+        $movie->rented = true;
         $movie->save();
         
-        Notification::success('Success message');
+        Notification::success('Success');
         
         return redirect()->action('CatalogController@getShow', ['id' => $id]);
     } 
     
     public function putReturn($id){  
         $movie = Movie::findOrFail($id);
-        $movie->rented = true;
+        $movie->rented = false;
         $movie->save();
         
         Notification::success('Success message');
