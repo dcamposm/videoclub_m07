@@ -13,7 +13,14 @@ class CreateRentsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('rents', function (Blueprint $table) {
+            $table->unsignedInteger('id_movie');
+            $table->unsignedInteger('id_user');
+            $table->date('date_rent');
+            $table->date('date_return_rent');
+            $table->unsignedInteger('price');
+            $table->timestamps();           
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class CreateRentsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('rents');
     }
 }

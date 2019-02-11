@@ -13,7 +13,14 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('comments', function (Blueprint $table) {
+            $table->unsignedInteger('id_movie');
+            $table->unsignedInteger('id_user');
+            $table->date('date_comment');
+            $table->integer('rate');
+            $table->string('comment');
+            $table->timestamps();           
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('comments');
     }
 }
