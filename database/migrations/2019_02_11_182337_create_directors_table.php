@@ -13,7 +13,14 @@ class CreateDirectorsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('directors', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('lastname');
+            $table->date('bday');
+            $table->unsignedInteger('nacionality');
+            $table->foreign('nacionality')->references('id')->on('countries');
+        });
     }
 
     /**
@@ -23,6 +30,6 @@ class CreateDirectorsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('directors');
     }
 }

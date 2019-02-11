@@ -13,7 +13,11 @@ class CreateGenresTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('genres', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('description');
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ class CreateGenresTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('movie_genre');
     }
 }
