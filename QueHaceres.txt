@@ -1,0 +1,20 @@
+Deme
+	tablas de:
+		movie_genre
+		genres
+		users
+		rols
+
+Albert
+	tablas de:
+		director
+		countries
+		actors
+		movie_actors
+
+Denis
+	tablas de:
+		rents
+		coments
+		clients
+		movies
