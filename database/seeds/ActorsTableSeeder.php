@@ -12,10 +12,12 @@ class ActorsTableSeeder extends Seeder
      */
     public function run()
     {
+    	DB::table('actors')->delete();
+
         DB::table('actors')->insert([
-            'name' => 'Nicolas Cage',
+            'name' => 'Nicolas',
             'lastname' => 'Cage',
-            'bday' => \Carbon\Carbon::create(1989, 22, 5),
+            'bday' => \Carbon\Carbon::create(1964, 1, 7),
             'nationality' => 'USA',
         ]);
     }
