@@ -19,6 +19,7 @@ class UpdateMoviesTable extends Migration
             $table->integer('time')->unsigned();
 
             $table->foreign('country')->references('id')->on('countries');
+            $table->foreign('director')->references('id')->on('directors');
         });
     }
 

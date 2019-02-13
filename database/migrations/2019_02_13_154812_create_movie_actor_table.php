@@ -20,7 +20,7 @@ class CreateMovieActorTable extends Migration
             $table->timestamps();
 
             $table->foreign('id_movie')->references('id')->on('movies');
-            $table->foreign('id_actors')->references('id')->on('actors');
+            $table->foreign('id_actor')->references('id')->on('actors');
         });
     }
 
