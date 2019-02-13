@@ -13,7 +13,13 @@ class UpdateMoviesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('movies', function (Blueprint $table) {
+            $table->integer('country')->unsigned();
+            $table->integer('director')->unsigned()->change();
+            $table->integer('time')->unsigned();
+
+            $table->foreign('country')->references('id')->on('countries');
+        });
     }
 
     /**
@@ -23,6 +29,10 @@ class UpdateMoviesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('movies', function (Blueprint $table) {
+            $table->dropColumn('country');
+            $table->string('director', 64)->change();
+            $table->dropColumn('time');
+        });
     }
 }
