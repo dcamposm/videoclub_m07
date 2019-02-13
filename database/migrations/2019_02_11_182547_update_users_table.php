@@ -13,7 +13,11 @@ class UpdateUsersTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('rol')->unsigned();
+
+            $table->foreign('rol')->references('id')->on('rols');
+        });
     }
 
     /**
@@ -23,6 +27,8 @@ class UpdateUsersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('rol');
+        });
     }
 }
