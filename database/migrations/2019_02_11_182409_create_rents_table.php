@@ -21,8 +21,8 @@ class CreateRentsTable extends Migration
             $table->unsignedInteger('price');
             $table->timestamps();
 
-            $table->foreign('id_movie')->references('id')->on('movie');
-            $table->foreign('id_user')->references('id')->on('user');
+            $table->foreign('id_movie')->references('id')->on('movies');
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 
