@@ -17,9 +17,12 @@ class CreateCommentsTable extends Migration
             $table->unsignedInteger('id_movie');
             $table->unsignedInteger('id_user');
             $table->date('date_comment');
-            $table->integer('rate');
+            $table->integer('rate_movie');
             $table->string('comment');
-            $table->timestamps();           
+            $table->timestamps();
+
+            $table->foreign('id_movie')->references('id')->on('movie');
+            $table->foreign('id_user')->references('id')->on('user');
         });
     }
 
