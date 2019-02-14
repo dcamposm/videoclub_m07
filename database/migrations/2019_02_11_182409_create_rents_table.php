@@ -15,14 +15,14 @@ class CreateRentsTable extends Migration
     {
         Schema::create('rents', function (Blueprint $table) {
             $table->unsignedInteger('id_movie');
-            $table->unsignedInteger('id_user');
+            $table->unsignedInteger('id_client');
             $table->date('date_rent');
             $table->date('date_return_rent');
             $table->unsignedInteger('price');
             $table->timestamps();
 
             $table->foreign('id_movie')->references('id')->on('movies');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_client')->references('id')->on('id_client');
         });
     }
 
