@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Genre;
 
 class GenresTableSeeder extends Seeder
 {
@@ -26,6 +27,16 @@ class GenresTableSeeder extends Seeder
         Genre:: create(array(    
             'name' => 'Comedy',
             'description' => 'Ha Ha Ha Ha Ha Ha'
+        ));
+        
+        Genre:: create(array(    
+            'name' => 'Drama',
+            'description' => 'Llorar'
+        ));
+        
+        Genre:: create(array(    
+            'name' => 'Suspense',
+            'description' => 'Sus pense'
         ));
     }
 }
