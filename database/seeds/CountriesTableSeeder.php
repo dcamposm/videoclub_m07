@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Country;
 
 class CountriesTableSeeder extends Seeder
 {
@@ -11,21 +12,42 @@ class CountriesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('')->delete();
+        DB::table('countries')->delete();
         
-        Genre:: create(array(    
-            'name' => 'Action',
-            'description' => 'Bum, explosion and action'
+        Country:: create(array(    
+            'id' => '1',
+            'name' => 'USA',
+            'flag' => 'Obesidad infantil'
         ));
         
-        Genre:: create(array(    
-            'name' => 'Horror',
-            'description' => 'uuuuuuuuuuuuuu, you are afraid and you know'
+        Country:: create(array(    
+            'id' => '2',
+            'name' => 'Espana',
+            'flag' => 'La paella'
         ));
         
-        Genre:: create(array(    
-            'name' => 'Comedy',
-            'description' => 'Ha Ha Ha Ha Ha Ha'
+        Country:: create(array(    
+            'id' => '3',
+            'name' => 'Francia',
+            'flag' => 'La bagget'
+        ));
+        
+        Country:: create(array(    
+            'id' => '4',
+            'name' => 'Italia',
+            'flag' => 'Les spaguetti'
+        ));
+        
+        Country:: create(array(    
+            'id' => '5',
+            'name' => 'Republica checa',
+            'flag' => 'Estos no tienen identidad'
+        ));
+        
+        Country:: create(array(    
+            'id' => '6',
+            'name' => 'Brasil',
+            'flag' => 'Sopa de macaco'
         ));
     }
 }

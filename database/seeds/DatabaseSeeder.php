@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
        
     public function run()
     {
-        /*self::seedCatalog();
-        $this->command->info('Tabla catálogo inicializada con datos!');*/
+        self::seedCatalog();
+        /*$this->command->info('Tabla catálogo inicializada con datos!');*/
         
         self::seedUsers();
         $this->command->info('Tabla usuarios inicializada con datos!');

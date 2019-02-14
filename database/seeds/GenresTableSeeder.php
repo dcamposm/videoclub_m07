@@ -28,5 +28,15 @@ class GenresTableSeeder extends Seeder
             'name' => 'Comedy',
             'description' => 'Ha Ha Ha Ha Ha Ha'
         ));
+        
+        Genre:: create(array(    
+            'name' => 'Drama',
+            'description' => 'Llorar'
+        ));
+        
+        Genre:: create(array(    
+            'name' => 'Suspense',
+            'description' => 'Sus pense'
+        ));
     }
 }
