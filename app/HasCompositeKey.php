@@ -1,6 +1,6 @@
 <?php
 
-namespace Mpociot\HasCompositeKey;
+namespace App;
 
 use Exception;
 use Illuminate\Database\Eloquent\Builder;
