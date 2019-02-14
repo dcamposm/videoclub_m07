@@ -29,18 +29,21 @@ class DatabaseSeeder extends Seeder
         $user->name = 'Deme';
         $user->email = 'deme@dem.dem';
         $user->password = bcrypt('demcam');
+        $user->rol = 1;
         $user->save();
         
         $user = new User;
         $user->name = 'Albert';
         $user->email = 'alb@alb.alb';
         $user->password = bcrypt('albmar');
+        $user->rol = 1;
         $user->save();
         
         $user = new User;
         $user->name = 'Denis';
         $user->email = 'denis@den.den';
         $user->password = bcrypt('denper');
+        $user->rol = 1;
         $user->save();
     }
     

@@ -15,11 +15,20 @@ class ActorsTableSeeder extends Seeder
     {
     	DB::table('actors')->delete();
 
-        DB::table('actors')->insert([
-            'name' => 'Nicolas',
-            'lastname' => 'Cage',
-            'bday' => \Carbon\Carbon::create(1964, 1, 7),
-            'nationality' => 'USA',
+        DB::table('actors')->array([
+            'id' => 1,
+            'name' => 'Al',
+            'lastname' => 'Pacino',
+            'bday' => \Carbon\Carbon::create(1940, 25, 4),
+            'nationality' => 1,
+        ]);
+
+        DB::table('actors')->array([
+            'id' => 2,
+            'name' => 'Morgan',
+            'lastname' => 'Freeman',
+            'bday' => \Carbon\Carbon::create(1937, 6, 1),
+            'nationality' => 1,
         ]);
     }
 }
