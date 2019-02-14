@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie_Actor extends Model
 {
+	use HasCompositeKey;
+
     protected $table = 'movie_actor';
-    protected $primaryKey = (['id_movie', 'id_actor']);
+    protected $primaryKey = ['id_movie', 'id_actor'];
 
     protected $fillable = [
         'character'
