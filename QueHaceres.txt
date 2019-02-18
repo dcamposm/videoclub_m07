@@ -18,3 +18,11 @@ Denis
 		coments
 		clients
 		movies
+
+
+QueHaceres generales:
+	- migrations (done)
+	- seeds 
+	- models
+	- controladores
+	- vistas
