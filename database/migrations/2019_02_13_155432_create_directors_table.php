@@ -20,6 +20,7 @@ class CreateDirectorsTable extends Migration
             $table->date('bday');
             $table->unsignedInteger('nacionality');
             $table->foreign('nacionality')->references('id')->on('countries');
+            $table->timestamps();
         });
     }
 

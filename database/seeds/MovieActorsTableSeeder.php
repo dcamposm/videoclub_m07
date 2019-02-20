@@ -15,16 +15,16 @@ class MovieActorsTableSeeder extends Seeder
     {
         DB::table('movie_actor')->delete();
 
-        DB::table('movie_actor')->array([
+        Movie_Actor:: create(array(
             'id_movie' => 1,
             'id_actor' => 1,
             'character' => 'Michael Corleone',
-        ]);
+        ));
 
-        DB::table('movie_actor')->array([
+        Movie_Actor:: create(array(
             'id_movie' => 5,
             'id_actor' => 2,
             'character' => 'Ellis Boyd',
-        ]);
+        ));
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Movie;
+use Illuminate\Database\Eloquent\Model;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,11 +15,30 @@ class DatabaseSeeder extends Seeder
        
     public function run()
     {
+        Model::unguard();
+
+        $this->call(GenresTableSeeder::class);   
+        $this->call(CountriesTableSeeder::class);
+        $this->call(RolsTableSeeder::class);
+        $this->call(DirectorsTableSeeder::class);
+        $this->call(ClientsTableSeeder::class);
+        $this->call(ActorsTableSeeder::class);
+        
+        Model::reguard();
+        
         self::seedCatalog();
         /*$this->command->info('Tabla catálogo inicializada con datos!');*/
         
         self::seedUsers();
-        $this->command->info('Tabla usuarios inicializada con datos!');
+        
+        Model::unguard();
+
+        $this->call(MovieGenreTableSeeder::class);   
+        $this->call(RentsTableSeeder::class);
+        $this->call(CommentsTableSeeder::class);
+        $this->call(MovieActorsTableSeeder::class);
+        
+        Model::reguard();
     }
     
     public function seedUsers()

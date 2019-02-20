@@ -15,19 +15,19 @@ class RolsTableSeeder extends Seeder
     {
         DB::table('rols')->delete();
 
-        DB::table('rols')->array([
+        Rol:: create(array( 
             'id' => 1,
             'name' => 'admin',
-        ]);
+        ));
 
-        DB::table('rols')->array([
+        Rol:: create(array( 
             'id' => 2,
             'name' => 'employee',
-        ]);
+        ));
 
-        DB::table('rols')->array([
+        Rol:: create(array( 
             'id' => 3,
             'name' => 'accountant',
-        ]);
+        ));
     }
 }

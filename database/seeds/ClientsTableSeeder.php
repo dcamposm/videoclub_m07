@@ -14,39 +14,39 @@ class ClientsTableSeeder extends Seeder
     {
         DB::table('clients')->delete();
         
-        Genre:: create(array(
-            'dni' => '541236987A',
+        Client:: create(array(
+            'dni' => '54123697A',
             'name' => 'Juan Manuel',
             'lastname' => 'Quito',
             'bday' => \Carbon\Carbon::create(1985, 25, 11),
-            'nationality' => '5',
+            'nacionality' => '5',
             'address' => 'Action',
         ));
         
-        Genre:: create(array(
-            'dni' => '875964123A',
+        Client:: create(array(
+            'dni' => '87596413A',
             'name' => 'Eufracia',
             'lastname' => 'Estalón',
             'bday' => \Carbon\Carbon::create(1994, 1, 4),
-            'nationality' => '4',
+            'nacionality' => '4',
             'address' => 'Action',
         ));
         
-        Genre:: create(array(
-            'dni' => '852741963A',
+        Client:: create(array(
+            'dni' => '85274163A',
             'name' => 'Manuela',
             'lastname' => 'Manitas',
             'bday' => \Carbon\Carbon::create(1987, 16, 6),
-            'nationality' => '2',
+            'nacionality' => '2',
             'address' => 'Action',
         ));
         
-        Genre:: create(array(
-            'dni' => '486275391A',
+        Client:: create(array(
+            'dni' => '48627531A',
             'name' => 'Ernesto',
             'lastname' => 'Eldelatendá',
             'bday' => \Carbon\Carbon::create(1991, 21, 3),
-            'nationality' => '2',
+            'nacionality' => '2',
             'address' => 'Action',
         ));
     }
