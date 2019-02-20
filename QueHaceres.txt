@@ -26,3 +26,5 @@ QueHaceres generales:
 	- models
 	- controladores
 	- vistas
+
+	SET FOREIGN_KEY_CHECKS=0

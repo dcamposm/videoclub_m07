@@ -22,7 +22,7 @@ class CreateRentsTable extends Migration
             $table->timestamps();
 
             $table->foreign('id_movie')->references('id')->on('movies');
-            $table->foreign('id_client')->references('id')->on('id_client');
+            $table->foreign('id_client')->references('id')->on('clients');
         });
     }
 

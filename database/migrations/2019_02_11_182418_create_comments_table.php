@@ -18,11 +18,11 @@ class CreateCommentsTable extends Migration
             $table->unsignedInteger('id_client');
             $table->date('date_comment');
             $table->integer('rate_movie');
-            $table->string('comment');
+            $table->string('comment', 500);
             $table->timestamps();
 
             $table->foreign('id_movie')->references('id')->on('movies');
-            $table->foreign('id_client')->references('id')->on('id_client');
+            $table->foreign('id_client')->references('id')->on('clients');
         });
     }
 
