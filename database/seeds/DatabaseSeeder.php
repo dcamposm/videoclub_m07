@@ -55,6 +55,8 @@ class DatabaseSeeder extends Seeder
             $p->title = $pelicula['title'];
             $p->year = $pelicula['year'];
             $p->director = $pelicula['director'];
+            $p->country = $pelicula['country'];
+            $p->time = $pelicula['time'];
             $p->poster = $pelicula['poster'];
             $p->rented = $pelicula['rented'];
             $p->synopsis = $pelicula['synopsis'];
