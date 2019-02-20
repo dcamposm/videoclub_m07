@@ -22,8 +22,8 @@ Denis
 
 QueHaceres generales:
 	- migrations (done)
-	- seeds 
-	- models
+	- seeds (done)
+	- models (done)
 	- controladores
 	- vistas
 

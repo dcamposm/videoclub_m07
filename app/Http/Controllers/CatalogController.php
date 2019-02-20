@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movie;
+use App\Director;
+use App\Country;
+use App\Movie_Genre;
 use Krucas\Notification\Facades\Notification;
 
 class CatalogController extends Controller
@@ -13,7 +16,11 @@ class CatalogController extends Controller
     } 
     
     public function getShow($id){
-        return view('catalog.show', array('pelicula'=>Movie::findOrFail($id)));
+        $movie = Movie::findOrFail($id);
+        $director = Director::findOrFail($movie->director);
+        $country = Country::findOrFail($movie->country);
+        $genre = Country::findOrFail($movie->country); //////////////////////////// añadir genre
+        return view('catalog.show', array('pelicula'=>$movie, 'director'=>$director, 'country'=>$country));
     } 
     
     public function getCreate(){   
