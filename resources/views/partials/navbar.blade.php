@@ -15,6 +15,12 @@
                             Catálogo
                         </a>
                     </li>
+                    <li>
+                        <a class="nav-link" href="{{url('/actor')}}">
+                            <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
+                            Actors
+                        </a>
+                    </li>
                     <li class="nav-item {{  Request::is('catalog/create') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('/catalog/create')}}">
                             <span>&#10010</span> Nueva película
