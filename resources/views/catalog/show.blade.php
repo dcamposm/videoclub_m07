@@ -12,8 +12,9 @@
     <div class="col-sm-8">
 
         <h2>{{$pelicula->title}}</h2>
-        <h3>Any: {{$pelicula->year}}</h3>
-        <h4>Director: {{$pelicula->director}}</h4>
+        <h3>Año: {{$pelicula->year}} // Duración: {{$pelicula->time}}</h3>
+        <h4>Director: <a href="{{url('/director/show/')}}/{{ $director->id }}">{{ $director->name }} {{ $director->lastname }}</a></h4>
+        <h4>Country: {{ $country->name }}</h4>
         <p><strong>Resumen: </strong> {{$pelicula->synopsis}}</p>
         @if( $pelicula->rented == 0 )
             <p><strong>Estado: </strong>Pelicula disponible</p>
