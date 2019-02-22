@@ -15,6 +15,15 @@
         <h3>Año: {{$pelicula->year}} // Duración: {{$pelicula->time}}</h3>
         <h4>Director: <a href="{{url('/director/show/')}}/{{ $director->id }}">{{ $director->name }} {{ $director->lastname }}</a></h4>
         <h4>Country: {{ $country->name }}</h4>
+        <p><strong>Generos: </strong>
+            @foreach ( $genres as $genre )
+                @foreach ( $genresAll as $genresAllOne )
+                    @if ($genre->id_genres == $genresAllOne->id) 
+                        {{$genresAllOne->name}}
+                    @endif
+                @endforeach
+            @endforeach
+        </p>
         <p><strong>Resumen: </strong> {{$pelicula->synopsis}}</p>
         @if( $pelicula->rented == 0 )
             <p><strong>Estado: </strong>Pelicula disponible</p>
