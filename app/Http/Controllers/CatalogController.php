@@ -8,6 +8,8 @@ use App\Director;
 use App\Country;
 use App\Genre;
 use App\Movie_Genre;
+use App\Comment;
+use App\Client;
 use Krucas\Notification\Facades\Notification;
 
 class CatalogController extends Controller
@@ -20,13 +22,21 @@ class CatalogController extends Controller
         $movie = Movie::findOrFail($id);
         $director = Director::findOrFail($movie->director);
         $country = Country::findOrFail($movie->country);
-        $genres = Movie_Genre::where("id_movies", $movie->id_movies); 
+
+        $genresMovie = Movie_Genre::where("id_movies", $movie->id)->get();
         $genresAll = Genre::all();
 
-        //////////////////// comprovabr idss
+        $CommentsMovie = Comment::where("id_movie", $movie->id)->get();
+        $clientsAll = Client::all();
 
-
-        return view('catalog.show', array('pelicula'=>$movie, 'director'=>$director, 'country'=>$country, 'genres'=>$genres, 'genresAll'=>$genresAll));
+        return view('catalog.show', array(  'pelicula'=>$movie,
+                                            'director'=>$director,
+                                            'country'=>$country,
+                                            'genresMovie'=>$genresMovie,
+                                            'genresAll'=>$genresAll,
+                                            'CommentsMovie'=>$CommentsMovie,
+                                            'clientsAll'=>$clientsAll
+                                        ));
     } 
     
     public function getCreate(){   
