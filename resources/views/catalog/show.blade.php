@@ -24,6 +24,15 @@
                     @endforeach
                 @endforeach
             </p>
+            <p><strong>Actores: </strong>
+                @foreach ( $actorsMovie as $actor )
+                    @foreach ( $actorsAll as $actorsAllOne )
+                        @if ($actor->id_actor == $actorsAllOne->id) 
+                            <a href="{{url('/actor/show/')}}/{{ $actorsAllOne->id }}">{{$actorsAllOne->name}} {{$actorsAllOne->lastname}}</a>
+                        @endif
+                    @endforeach
+                @endforeach
+            </p>
             <p><strong>Resumen: </strong> {{$pelicula->synopsis}}</p>
             @if( $pelicula->rented == 0 )
                 <p><strong>Estado: </strong>Pelicula disponible</p>
