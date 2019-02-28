@@ -1,6 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
+<br>
+    <div>
+        <a href="{{ url('/user/create') }}" class="btn btn-primary">
+            <span class="fas fa-address-book"></span>
+            Añadir usuario
+        </a>
+    </div>
+<br>
 
     <div class="row">
 

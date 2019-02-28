@@ -36,13 +36,15 @@
                 @foreach ($moviesActor as $movie_id)
                     @foreach ($moviesAll as $movie )
                         @if ($movie->id == $movie_id->id_movie)
-                            <div class="card card-shadow m-3" style="min-width: 250px;">
+                            <div class="card card-shadow m-3 text-center" style="min-width: 250px;">
                                 <div class="card-header text-center">
+                                    <a href="{{ url('/catalog/show/' . $movie->id ) }}">
                                     {{$movie->title}}
+                                    </a>
                                 </div>
                                 <div class="card-body" style="padding:30px">
-
-                                    <div>Personaje: {{$movie_id->character}}</div>
+                                    <p><img src="{{$movie->poster}}" style="height:200px"/></p>
+                                    <p><strong>Personaje:</strong> {{$movie_id->character}}</p>
 
                                 </div>
                             </div>
