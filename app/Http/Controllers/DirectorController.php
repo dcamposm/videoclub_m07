@@ -60,7 +60,7 @@ class DirectorController extends Controller
     public function deleteDirector($id){ 
         Director::findOrFail($id)->delete();
         
-        Notification::success('Director eliminat');
+        Notification::success('Director eliminado');
         
         return redirect()->action('DirectorController@getIndex');
     }

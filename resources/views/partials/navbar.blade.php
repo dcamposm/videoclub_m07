@@ -24,17 +24,19 @@
                     <li>
                         <a class="nav-link" href="{{url('/actor')}}">
                             <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
-                            Actors
-                        </a>
-                    </li>
-                    <li class="nav-item {{  Request::is('catalog/create') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{url('/catalog/create')}}">
-                            <span>&#10010</span> Nueva película
+                            Actores
                         </a>
                     </li>
                     <li class="nav-item {{  Request::is('director') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('/director')}}">
-                            <span class="fas fa-address-book"></span> Directors
+                            <span class="fas fa-address-book" aria-hidden="true"></span> 
+                            Directores
+                        </a>
+                    </li>
+                    <li class="nav-item {{  Request::is('genre') ? 'active' : ''}}">
+                        <a class="nav-link" href="{{url('/genre')}}">
+                            <span class="fas fa-film" aria-hidden="true"></span> 
+                            Generos
                         </a>
                     </li>
                 </ul>
