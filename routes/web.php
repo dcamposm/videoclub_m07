@@ -93,6 +93,22 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::delete('delete/{id}', 'UserController@deleteUser');
     });
+    /*----------------Route genre--------------*/
+    Route::group(['prefix' => 'genre'], function() {
+        Route::get('/', 'GenreController@getIndex');
+
+        Route::get('show/{id}', 'GenreController@getShow');
+
+        Route::get('create', 'DirectorController@getCreate');
+        
+        Route::post('create', 'DirectorController@postCreate');
+
+        Route::get('edit/{id}', 'DirectorController@getEdit');
+        
+        Route::put('edit/{id}', 'DirectorController@putEdit');
+
+        Route::delete('delete/{id}', 'DirectorController@deleteDirector');
+    });
 });
 
 Auth::routes();

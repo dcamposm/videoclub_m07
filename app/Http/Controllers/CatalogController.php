@@ -6,7 +6,12 @@ use Illuminate\Http\Request;
 use App\Movie;
 use App\Director;
 use App\Country;
+use App\Genre;
 use App\Movie_Genre;
+use App\Actor;
+use App\Movie_Actor;
+use App\Comment;
+use App\Client;
 use Krucas\Notification\Facades\Notification;
 
 class CatalogController extends Controller
@@ -19,8 +24,26 @@ class CatalogController extends Controller
         $movie = Movie::findOrFail($id);
         $director = Director::findOrFail($movie->director);
         $country = Country::findOrFail($movie->country);
-        $genre = Country::findOrFail($movie->country); //////////////////////////// añadir genre
-        return view('catalog.show', array('pelicula'=>$movie, 'director'=>$director, 'country'=>$country));
+
+        $genresMovie = Movie_Genre::where("id_movies", $movie->id)->get();
+        $genresAll = Genre::all();
+
+        $actorsMovie = Movie_Actor::where("id_movie", $movie->id)->get();
+        $actorsAll = Actor::all();
+
+        $CommentsMovie = Comment::where("id_movie", $movie->id)->get();
+        $clientsAll = Client::all();
+
+        return view('catalog.show', array(  'pelicula'=>$movie,
+                                            'director'=>$director,
+                                            'country'=>$country,
+                                            'genresMovie'=>$genresMovie,
+                                            'genresAll'=>$genresAll,
+                                            'actorsMovie'=>$actorsMovie,
+                                            'actorsAll'=>$actorsAll,
+                                            'CommentsMovie'=>$CommentsMovie,
+                                            'clientsAll'=>$clientsAll
+                                        ));
     } 
     
     public function getCreate(){   

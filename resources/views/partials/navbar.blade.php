@@ -32,6 +32,11 @@
                             <span>&#10010</span> Nueva película
                         </a>
                     </li>
+                    <li class="nav-item {{  Request::is('director') ? 'active' : ''}}">
+                        <a class="nav-link" href="{{url('/director')}}">
+                            <span class="fas fa-address-book"></span> Directors
+                        </a>
+                    </li>
                 </ul>
 
                 <ul class="navbar-nav navbar-right">
