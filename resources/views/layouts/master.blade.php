@@ -13,7 +13,8 @@
   <body>
     @include('partials.navbar')
     
-    <div class="container">
+    <div class="container"> 
+        <br>
         @notification()
         
         

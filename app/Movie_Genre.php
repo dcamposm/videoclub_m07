@@ -13,11 +13,11 @@ class Movie_Genre extends Model
 
     public function genres()
     {
-        return $this->belongsTo('App\Genre', 'id_genres', 'id');
+        return $this->belongsTo('App\Genre');
     }
 
     public function movies()
     {
-        return $this->belongsTo('App\Movie', 'id_movie', 'id');
+        return $this->belongsTo('App\Movie');
     }
 }

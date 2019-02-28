@@ -83,15 +83,15 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::get('show/{id}', 'GenreController@getShow');
 
-        Route::get('create', 'DirectorController@getCreate');
+        Route::get('create', 'GenreController@getCreate');
         
-        Route::post('create', 'DirectorController@postCreate');
+        Route::post('create', 'GenreController@postCreate');
 
-        Route::get('edit/{id}', 'DirectorController@getEdit');
+        Route::get('edit/{id}', 'GenreController@getEdit');
         
-        Route::put('edit/{id}', 'DirectorController@putEdit');
+        Route::put('edit/{id}', 'GenreController@putEdit');
 
-        Route::delete('delete/{id}', 'DirectorController@deleteDirector');
+        Route::delete('delete/{id}', 'GenreController@deleteGenre');
     });
 });
 
