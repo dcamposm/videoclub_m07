@@ -4,13 +4,12 @@
 
     <div class="row">
 
-    @foreach( $pelicula as $pelicula )
+    @foreach( $actor as $actor )
     <div class="col-xs-6 col-sm-4 col-md-3 text-center">
 
-        <a href="{{ url('/catalog/show/' . $pelicula->id ) }}">
-            <img src="{{$pelicula->poster}}" style="height:200px"/>
+        <a href="{{ url('/actor/show/' . $actor->id ) }}">
             <h4 style="min-height:45px;margin:5px 0 10px 0">
-                {{ $pelicula->title }}
+                {{$actor->name}} {{$actor->lastname}}
             </h4>
         </a>
 

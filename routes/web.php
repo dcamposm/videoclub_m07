@@ -45,6 +45,22 @@ Route::group(['middleware' => 'auth'], function() {
         
         Route::delete('delete/{id}', 'CatalogController@deleteMovie');
     });
+    /*----------------Route actor--------------*/
+    Route::group(['prefix' => 'actor'], function() {
+        Route::get('/', 'ActorController@getIndex');
+
+        Route::get('show/{id}', 'ActorController@getShow');
+
+        Route::get('create', 'ActorController@getCreate');
+        
+        Route::post('create', 'ActorController@postCreate');
+
+        Route::get('edit/{id}', 'ActorController@getEdit');
+        
+        Route::put('edit/{id}', 'ActorController@putEdit');
+
+        Route::delete('delete/{id}', 'ActorController@deleteActor');
+    });  
     /*----------------Route director--------------*/
     Route::group(['prefix' => 'director'], function() {
         Route::get('/', 'DirectorController@getIndex');
