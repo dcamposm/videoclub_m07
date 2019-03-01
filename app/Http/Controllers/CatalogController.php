@@ -26,13 +26,13 @@ class CatalogController extends Controller
         $country = Country::findOrFail($movie->country);
 
         $genresMovie = Movie_Genre::where("id_movies", $movie->id)->get();
-        $genresAll = Genre::all();
+        $genresAll = Genre::All();
 
         $actorsMovie = Movie_Actor::where("id_movie", $movie->id)->get();
-        $actorsAll = Actor::all();
+        $actorsAll = Actor::All();
 
         $CommentsMovie = Comment::where("id_movie", $movie->id)->get();
-        $clientsAll = Client::all();
+        $clientsAll = Client::All();
 
         return view('catalog.show', array(  'pelicula'=>$movie,
                                             'director'=>$director,
@@ -50,8 +50,67 @@ class CatalogController extends Controller
         return view('catalog.create');
     } 
     
-    public function getEdit($id){ 
-        return view('catalog.edit', array('pelicula'=>Movie::findOrFail($id)));
+    public function getEdit($id){
+        $movie = Movie::findOrFail($id);
+
+        $directors = Director::All();
+        $countries = Country::All();
+
+        $genresMovie = Movie_Genre::where("id_movies", $movie->id)->get();
+        $genresAll = Genre::All();
+
+        $genres = array();
+
+        $cont = 0;
+
+        foreach ($genresAll as $genre){    
+            $exists = 0;
+            foreach ($genresMovie as $genreMovie){ 
+                if ($genreMovie->id_genres == $genre->id) { /////////////////////////////////////////////////// cambiar cuando se cambie el migrate
+                    $exists=1;
+                }
+            }
+
+            $genres[$cont] = array( 'id' => $genre->id,
+                                    'name' => $genre->name,
+                                    'exists' => $exists
+                                    );
+
+            $cont++;
+        }
+
+        $actorsMovie = Movie_Actor::where("id_movie", $movie->id)->get();
+        $actorsAll = Actor::All();
+
+        $actors = array();
+
+        $cont = 0;
+/*
+        foreach ($genresAll as $genre){    
+            $exists = 0;
+            foreach ($genresMovie as $genreMovie){ 
+                if ($genreMovie->id_genres == $genre->id) {
+                    $exists=1;
+                }
+            }
+
+            $genres[$cont] = array( 'id' => $genre->id,
+                                    'name' => $genre->name,
+                                    'exists' => $exists
+                                    );
+
+            $cont++;
+        }*/
+
+
+
+        return view('catalog.edit', array(  'pelicula'=>$movie,
+                                            'directors'=>$directors,
+                                            'genres'=>$genres,
+                                            'countries'=>$countries,
+                                            'actorsMovie'=>$actorsMovie,
+                                            'actors'=>$actors
+                                        ));
     }
     
     public function postCreate(Request $request){
