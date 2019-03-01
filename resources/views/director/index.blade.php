@@ -2,8 +2,16 @@
 
 @section('content')
 <br>
+    <div>
+        <a href="{{ url('/director/create') }}" class="btn btn-primary">
+            <span class="fas fa-address-book"></span>
+            Añadir director
+        </a>
+    </div>
+<br>
     <div class="row">
-
+        
+        
     @foreach( $directors as $director )
     
     <div class="col-xs-6 col-sm-4 col-md-3 text-center">

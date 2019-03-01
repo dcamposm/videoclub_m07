@@ -6,7 +6,7 @@
         <div class="offset-md-3 col-md-6">
            <div class="card">
               <div class="card-header text-center">
-                 Añadir actor
+                 Añadir usuario
               </div>
               <div class="card-body" style="padding:30px">
 
@@ -20,20 +20,20 @@
                  </div>
 
                  <div class="form-group">
-                    <label for="lastname">Apellido</label>
-                    <input type="text" name="lastname" id="lastname" class="form-control">
+                    <label for="email">Mail</label>
+                    <input type="email" name="email" id="email" class="form-control">
                  </div>
 
                  <div class="form-group">
-                    <label for="bday">Fecha de nacimiento</label>
-                    <input type="text" name="bday" id="bday" class="form-control">
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" id="password" class="form-control">
                  </div>
 
                  <div class="form-group">
-                    <label for="nationality">Nacionalidad</label>
-                    <select name="nationality" id="nationality" class="form-control">
-                        @foreach ($countries as $country)
-                                <option value="{{$country->id}}">{{$country->name}}</option>
+                    <label for="rol">Rol</label>
+                    <select name="rol" id="rol" class="form-control">
+                        @foreach ($rol as $rol)
+                                <option value="{{$rol->id}}">{{$rol->name}}</option>
                         @endforeach
                     </select>
                     
@@ -41,7 +41,7 @@
 
                  <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
-                        Añadir actor
+                        Añadir usuario
                     </button>
                  </div>
 

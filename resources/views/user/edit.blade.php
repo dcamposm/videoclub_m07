@@ -6,7 +6,7 @@
         <div class="offset-md-3 col-md-6">
            <div class="card">
               <div class="card-header text-center">
-                 Modificar director
+                 Modificar usuario
               </div>
               <div class="card-body" style="padding:30px">
 
@@ -18,31 +18,35 @@
 
                  <div class="form-group">
                     <label for="name">Nombre</label>
-                    <input type="text" name="name" id="name" class="form-control" value="{{$director->name}}">
+                    <input type="text" name="name" id="name" class="form-control" value="{{$user->name}}">
                  </div>
 
                  <div class="form-group">
-                    <label for="lastname">Apellido</label>
-                    <input type="text" name="lastname" id="lastname" class="form-control" value="{{$director->lastname}}">
+                    <label for="email">Mail</label>
+                    <input type="email" name="email" id="email" class="form-control" value="{{$user->email}}">
                  </div>
 
                  <div class="form-group">
-                    <label for="bday">Ano de nacimiento</label>
-                    <input type="date" name="bday" id="bday" class="form-control" value="{{$director->bday}}">
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" id="password" class="form-control" value="{{$user->password}}">
                  </div>
 
-                <div class="form-group">
-                    <label for="nacionality">Nacionalitat:</label>
-                    <select class="form-control" name="nacionality">
-                        @foreach ($countries as $country)
-                            <option value="{{ $country['id'] }}" {{ $director->nacionality == $country['id'] ? 'selected' : ''}}>{{ $country['name'] }}</option>
+                 <div class="form-group">
+                    <label for="rol">Rol</label>
+                    <select name="rol" id="rol" class="form-control">
+                        @foreach ($rols as $rol)
+                                @if ($rol->id === $user->rol)
+                                <option value="{{$rol->id}}" selected>{{$rol->name}}</option>
+                                @else
+                                <option value="{{$rol->id}}">{{$rol->name}}</option>
+                                @endif
                         @endforeach
                     </select>
-                </div>
+                 </div>
 
                  <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
-                        Modificar director
+                        Modificar usuario
                     </button>
                  </div>
 
