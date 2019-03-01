@@ -31,6 +31,7 @@ class DirectorController extends Controller
         $director->lastname = $request->input('lastname');
         $director->bday = $request->input('bday');
         $director->nacionality = $request->input('nacionality');
+        $director->image = $request->input('image');
         $director->save();
         
         Notification::success('Se a anadido el director');
@@ -50,6 +51,7 @@ class DirectorController extends Controller
         $director->lastname = $request->input('lastname');
         $director->bday = $request->input('bday');
         $director->nacionality = $request->input('nacionality');
+        $director->image = $request->input('image');
         $director->save();
         
         Notification::success('Se a modificado el director');
