@@ -40,11 +40,7 @@
                     <label for="nationality">Nacionalidad</label>
                     <select name="nationality" id="nationality" class="form-control">
                         @foreach ($countries as $country)
-                                @if ($country->id === $actor->nationality)
-                                <option value="{{$country->id}}" selected>{{$country->name}}</option>
-                                @else
-                                <option value="{{$country->id}}">{{$country->name}}</option>
-                                @endif
+                                <option value="{{ $country['id'] }}" {{ $actor->nationality == $country['id'] ? 'selected' : ''}}>{{ $country['name'] }}</option>
                         @endforeach
                     </select>
                  </div>

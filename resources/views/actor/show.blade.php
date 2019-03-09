@@ -6,7 +6,7 @@
 
         <div class="col-sm-4">
 
-            <img src="{{$actor->image}}" style="width:350px"/>
+            <img src="{{$actor->image}}" class="col"/>
 
         </div>
         <div class="col-sm-8">

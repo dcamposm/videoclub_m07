@@ -24,7 +24,7 @@ class ActorController extends Controller
     } 
 
     public function getCreate(){   
-        $countries = Country::all();
+        $countries = Countries();
         return view('actor.create', array('countries'=>$countries));
     } 
     
@@ -40,7 +40,25 @@ class ActorController extends Controller
         $actor->lastname = $request->input('lastname');
         $actor->bday = $request->input('bday');
         $actor->image = $request->input('image');
-        $actor->nationality = $request->input('nationality');
+
+        $exist = false;
+        foreach ($countries as $country){
+            if ($country->iso==$request->input('nationality')){
+                $actor->nationality = $country->id;
+                $exist = true;
+            }
+        }
+        if ($exist == false){
+            $coun = country($request->input('nationality'));
+            $country = new Country;
+            $country->name = $coun->getName();
+            $country->iso = $coun->getIsoAlpha2();
+            $country->flag = '';
+            $country->save();
+            //return response()->json($country);   
+            $actor->nationality = $country->id;
+        }
+
         $actor->save();
         
         Notification::success('Actor creado correctamente');
@@ -54,6 +72,26 @@ class ActorController extends Controller
         $actor->name = $request->input('name');
         $actor->lastname = $request->input('lastname');
         $actor->bday = $request->input('bday');
+
+        $countries = Country::all();
+        
+        $exist = false;
+        foreach ($countries as $country){
+            if ($country->iso==$request->input('nationality')){
+                $actor->nationality = $country->id;
+                $exist = true;
+            }
+        }
+        if ($exist == false){
+            $coun = country($request->input('nationality'));
+            $country = new Country;
+            $country->name = $coun->getName();
+            $country->iso = $coun->getIsoAlpha2();
+            $country->flag = '';
+            $country->save(); 
+            $actor->nationality = $country->id;
+        }
+
         $actor->image = $request->input('image');
         $actor->nationality = $request->input('nationality');
         $actor->save();
