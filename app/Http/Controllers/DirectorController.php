@@ -11,16 +11,20 @@ class DirectorController extends Controller
 {
     public function getIndex(){
         //return response()->json(Director::All());
+        
         return view('director.index', array('directors'=>Director::All()));
     } 
     
     public function getShow($id){
-        $countries = Country::all();
-        return view('director.show', array('director'=>Director::findOrFail($id), 'countries'=>$countries));
+        //$countries = Country::all();
+        return view('director.show', array('director'=>Director::findOrFail($id)));
     } 
     
     public function getCreate(){   
-        $countries = Country::all();
+        //$countries = Country::all();
+        $countries = countries();
+        
+        //return response()->json($countries);
         return view('director.create', array('countries'=>$countries));
     } 
     
@@ -40,7 +44,7 @@ class DirectorController extends Controller
     }
     
     public function getEdit($id){ 
-        $countries = Country::all();
+        $countries = countries();
         return view('director.edit', array('director'=>Director::findOrFail($id), 'countries'=>$countries));
     }
     

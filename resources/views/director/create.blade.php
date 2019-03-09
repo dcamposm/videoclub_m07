@@ -33,7 +33,7 @@
                     <label for="nacionality">Nacionalitat:</label>
                     <select class="form-control" name="nacionality">
                         @foreach ($countries as $country)
-                            <option value="{{ $country['id'] }}">{{ $country['name'] }}</option>
+                            <option value="{{ $country['name'] }}">{{ $country['name'] }}</option>
                         @endforeach
                     </select>
                 </div>
