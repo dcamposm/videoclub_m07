@@ -63,16 +63,36 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="poster">Generos</label>
+                        <div class="slideDisplayEffect">
+                            <label class="text-primary">Generos</label>
+                        </div>
                         <div class="funkyradio row">
                             @foreach ( $genres as $genre )
                                 <div class="funkyradio-primary col-md-6">
                                     @if ($genre["exists"])
-                                        <input type="checkbox" name="genre" id="{{$genre['id']}}" checked/>
+                                        <input type="checkbox" name="genre[]" value="{{$genre['id']}}" id="genre-{{$genre['id']}}" checked/>
                                     @else
-                                        <input type="checkbox" name="genre" id="{{$genre['id']}}"/>
+                                        <input type="checkbox" name="genre[]" value="{{$genre['id']}}" id="genre-{{$genre['id']}}"/>
                                     @endif
-                                    <label for="{{$genre['id']}}">{{$genre['name']}}</label>
+                                    <label for="genre-{{$genre['id']}}">{{$genre['name']}}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="slideDisplayEffect">
+                            <label class="text-primary">Actores</label>
+                        </div>
+                        <div class="funkyradio row">
+                            @foreach ( $actors as $actor )
+                                <div class="funkyradio-primary col-md-6">
+                                    @if ($actor["exists"])
+                                        <input type="checkbox" name="actor[]" value="{{$actor['id']}}" id="actor-{{$actor['id']}}" checked/>
+                                    @else
+                                        <input type="checkbox" name="actor[]" value="{{$actor['id']}}" id="actor-{{$actor['id']}}"/>
+                                    @endif
+                                    <label for="actor-{{$actor['id']}}">{{$actor['name']}} {{$actor['lastname']}}</label>
                                 </div>
                             @endforeach
                         </div>
@@ -100,4 +120,22 @@
            </div>
         </div>
      </div>
+
+
+    <script>
+        $(document).ready(function(){
+            $(".slideDisplayEffect").click(function(){
+                //$(this).next().slideToggle();
+                if ( $(this).next().is( ":hidden" ) ) {
+
+                    $(this).next().show();
+
+                } else {
+
+                    $(this).next().hide();
+
+                }
+            });
+        });
+    </script>
 @stop

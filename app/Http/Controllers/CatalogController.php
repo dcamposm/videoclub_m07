@@ -85,30 +85,30 @@ class CatalogController extends Controller
         $actors = array();
 
         $cont = 0;
-/*
-        foreach ($genresAll as $genre){    
+
+        foreach ($actorsAll as $actor){    
             $exists = 0;
-            foreach ($genresMovie as $genreMovie){ 
-                if ($genreMovie->id_genres == $genre->id) {
+            foreach ($actorsMovie as $actorMovie){ 
+                if ($actorMovie->id_actor == $actor->id) {
                     $exists=1;
                 }
             }
 
-            $genres[$cont] = array( 'id' => $genre->id,
-                                    'name' => $genre->name,
+            $actors[$cont] = array( 'id' => $actor->id,
+                                    'name' => $actor->name,
+                                    'lastname' => $actor->lastname,
                                     'exists' => $exists
                                     );
 
             $cont++;
-        }*/
+        }
 
 
 
         return view('catalog.edit', array(  'pelicula'=>$movie,
                                             'directors'=>$directors,
-                                            'genres'=>$genres,
                                             'countries'=>$countries,
-                                            'actorsMovie'=>$actorsMovie,
+                                            'genres'=>$genres,
                                             'actors'=>$actors
                                         ));
     }
@@ -130,13 +130,31 @@ class CatalogController extends Controller
     
     public function putEdit(Request $request, $id){ 
         
+        //dd(request()->all());
+
+        Movie_Genre::where("id_movies", $id)->delete();
+        foreach (request()->genre as $genreId){
+            $genre = new Movie_Genre;
+            $genre->id_movies = $id;
+            $genre->id_genres = $genreId;
+            $genre->save();
+        }
+
+        Movie_Actor::where("id_movies", $id)->delete();
+        foreach (request()->actor as $actorId){
+            $actor = new Movie_Actor;
+            $actor->id_movies = $id;
+            $actor->id_genres = $actorId;
+            $actor->save();
+        }
+/*
         $movie = Movie::findOrFail($id);
         $movie->title = $request->input('title');
         $movie->year = $request->input('year');
         $movie->director = $request->input('director');
         $movie->poster = $request->input('poster');
         $movie->synopsis = $request->input('synopsis');
-        $movie->save();
+        $movie->save();*/
         
         Notification::success('Success message');
 
