@@ -14,7 +14,7 @@
             <h2>{{$pelicula->title}}</h2>
             <h3>Año: {{$pelicula->year}} // Duración: {{$pelicula->time}}</h3>
             <h4>Director: <a href="{{url('/director/show/')}}/{{ $director->id }}">{{ $director->name }} {{ $director->lastname }}</a></h4>
-            <p><strong>Country: </strong>{{ $country->name }}</p>
+            <p><strong>Producida en: </strong>{{ $country->name }}</p>
             <p><strong>Generos: </strong>
                 @foreach ( $genresMovie as $genre )
                     @foreach ( $genresAll as $genresAllOne )

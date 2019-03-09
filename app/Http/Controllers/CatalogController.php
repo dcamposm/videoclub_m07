@@ -26,13 +26,13 @@ class CatalogController extends Controller
         $country = Country::findOrFail($movie->country);
 
         $genresMovie = Movie_Genre::where("id_movies", $movie->id)->get();
-        $genresAll = Genre::all();
+        $genresAll = Genre::All();
 
         $actorsMovie = Movie_Actor::where("id_movie", $movie->id)->get();
-        $actorsAll = Actor::all();
+        $actorsAll = Actor::All();
 
         $CommentsMovie = Comment::where("id_movie", $movie->id)->get();
-        $clientsAll = Client::all();
+        $clientsAll = Client::All();
 
         return view('catalog.show', array(  'pelicula'=>$movie,
                                             'director'=>$director,
@@ -50,8 +50,67 @@ class CatalogController extends Controller
         return view('catalog.create');
     } 
     
-    public function getEdit($id){ 
-        return view('catalog.edit', array('pelicula'=>Movie::findOrFail($id)));
+    public function getEdit($id){
+        $movie = Movie::findOrFail($id);
+
+        $directors = Director::All();
+        $countries = Country::All();
+
+        $genresMovie = Movie_Genre::where("id_movies", $movie->id)->get();
+        $genresAll = Genre::All();
+
+        $genres = array();
+
+        $cont = 0;
+
+        foreach ($genresAll as $genre){    
+            $exists = 0;
+            foreach ($genresMovie as $genreMovie){ 
+                if ($genreMovie->id_genres == $genre->id) { /////////////////////////////////////////////////// cambiar cuando se cambie el migrate
+                    $exists=1;
+                }
+            }
+
+            $genres[$cont] = array( 'id' => $genre->id,
+                                    'name' => $genre->name,
+                                    'exists' => $exists
+                                    );
+
+            $cont++;
+        }
+
+        $actorsMovie = Movie_Actor::where("id_movie", $movie->id)->get();
+        $actorsAll = Actor::All();
+
+        $actors = array();
+
+        $cont = 0;
+
+        foreach ($actorsAll as $actor){    
+            $exists = 0;
+            foreach ($actorsMovie as $actorMovie){ 
+                if ($actorMovie->id_actor == $actor->id) {
+                    $exists=1;
+                }
+            }
+
+            $actors[$cont] = array( 'id' => $actor->id,
+                                    'name' => $actor->name,
+                                    'lastname' => $actor->lastname,
+                                    'exists' => $exists
+                                    );
+
+            $cont++;
+        }
+
+
+
+        return view('catalog.edit', array(  'pelicula'=>$movie,
+                                            'directors'=>$directors,
+                                            'countries'=>$countries,
+                                            'genres'=>$genres,
+                                            'actors'=>$actors
+                                        ));
     }
     
     public function postCreate(Request $request){
@@ -71,13 +130,31 @@ class CatalogController extends Controller
     
     public function putEdit(Request $request, $id){ 
         
+        //dd(request()->all());
+
+        Movie_Genre::where("id_movies", $id)->delete();
+        foreach (request()->genre as $genreId){
+            $genre = new Movie_Genre;
+            $genre->id_movies = $id;
+            $genre->id_genres = $genreId;
+            $genre->save();
+        }
+
+        Movie_Actor::where("id_movies", $id)->delete();
+        foreach (request()->actor as $actorId){
+            $actor = new Movie_Actor;
+            $actor->id_movies = $id;
+            $actor->id_genres = $actorId;
+            $actor->save();
+        }
+/*
         $movie = Movie::findOrFail($id);
         $movie->title = $request->input('title');
         $movie->year = $request->input('year');
         $movie->director = $request->input('director');
         $movie->poster = $request->input('poster');
         $movie->synopsis = $request->input('synopsis');
-        $movie->save();
+        $movie->save();*/
         
         Notification::success('Success message');
 

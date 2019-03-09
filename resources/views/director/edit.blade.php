@@ -39,7 +39,10 @@
                         @endforeach
                     </select>
                 </div>
-
+                <div class="form-group">
+                    <label for="image">Foto</label>
+                    <input type="text" name="image" id="image" class="form-control" value="{{$director->image}}">
+                 </div>
                  <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
                         Modificar director

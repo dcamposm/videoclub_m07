@@ -6,7 +6,7 @@
 
     <div class="col-sm-4">
 
-        <img src="{{$director->poster}}" style="height:500px"/>
+        <img src="{{$director->image}}" style="height:300px"/>
 
     </div>
     <div class="col-sm-8">
@@ -15,7 +15,7 @@
         <h3>Año de nacimiento: {{$director->bday}}</h3>
         @foreach ($countries as $country)
             @if ($director->nacionality == $country->id)
-                <h4>Nacionalidad: {{$country->name}}</h4>
+            <h4>Nacionalidad: {{$country->name}}</h4>
             @endif
         @endforeach
         <form action="{{action('DirectorController@deleteDirector', $director->id)}}" 

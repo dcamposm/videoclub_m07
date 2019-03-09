@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
         Krucas\Notification\NotificationServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */
@@ -226,6 +227,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Notification' => Krucas\Notification\Facades\Notification::class,
+        
     ],
 
 ];
