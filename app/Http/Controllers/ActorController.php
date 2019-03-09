@@ -31,6 +31,7 @@ class ActorController extends Controller
     public function getEdit($id){ 
         $actor = Actor::find($id);
         $actor->countries;
+        //return response()->json($actor);
         $countries = Countries();
         return view('actor.edit', array('actor'=>$actor, 'countries'=>$countries));
     }
