@@ -13,7 +13,11 @@
 
         <h2>{{$director->name}} {{$director->lastname}}</h2>
         <h3>Año de nacimiento: {{$director->bday}}</h3>
-        <h4>Nacionalidad: {{$director->nacionality}}</h4>
+        @foreach ($countries as $country)
+            @if ($director->nacionality == $country->id)
+            <h4>Nacionalidad: {{$country->name}}</h4>
+            @endif
+        @endforeach
         <form action="{{action('DirectorController@deleteDirector', $director->id)}}" 
                 method="POST" style="display:inline">
                 {{ method_field('DELETE ') }}

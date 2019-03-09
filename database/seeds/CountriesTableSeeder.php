@@ -17,37 +17,43 @@ class CountriesTableSeeder extends Seeder
         Country:: create(array(    
             'id' => '1',
             'name' => 'USA',
-            'flag' => 'Obesidad infantil'
+            'flag' => 'Obesidad infantil',
+            'iso' => 'US'            
         ));
         
         Country:: create(array(    
             'id' => '2',
             'name' => 'Espana',
-            'flag' => 'La paella'
+            'flag' => 'La paella',
+            'iso' => 'ES'            
         ));
         
         Country:: create(array(    
             'id' => '3',
             'name' => 'Francia',
-            'flag' => 'La bagget'
+            'flag' => 'La bagget',
+            'iso' => 'FR'           
         ));
         
         Country:: create(array(    
             'id' => '4',
             'name' => 'Italia',
-            'flag' => 'Les spaguetti'
+            'flag' => 'Les spaguetti',
+            'iso' => 'IT'           
         ));
         
         Country:: create(array(    
             'id' => '5',
             'name' => 'Republica checa',
-            'flag' => 'Estos no tienen identidad'
+            'flag' => 'Estos no tienen identidad',
+            'iso' => 'SC'
         ));
         
         Country:: create(array(    
             'id' => '6',
             'name' => 'Brasil',
-            'flag' => 'Sopa de macaco'
+            'flag' => 'Sopa de macaco',
+            'iso' => 'BR'
         ));
     }
 }
