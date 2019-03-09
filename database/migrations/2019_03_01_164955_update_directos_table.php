@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateUsersTable extends Migration
+class UpdateDirectosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class UpdateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('rol')->unsigned();
-            
-            $table->foreign('rol')->references('id')->on('rols');
+        Schema::table('directors', function (Blueprint $table) {
+            $table->string('image',1000)->after('bday');
         });
     }
 
@@ -27,8 +25,8 @@ class UpdateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('rol');
+        Schema::table('directors', function (Blueprint $table) {
+            $table->dropColumn('image');
         });
     }
 }

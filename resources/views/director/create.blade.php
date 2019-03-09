@@ -33,11 +33,16 @@
                     <label for="nacionality">Nacionalitat:</label>
                     <select class="form-control" name="nacionality">
                         @foreach ($countries as $country)
-                            <option value="{{ $country['id'] }}">{{ $country['name'] }}</option>
+                            <option value="{{ $country['iso_3166_1_alpha2'] }}">{{ $country['name'] }}</option>
                         @endforeach
                     </select>
                 </div>
-
+                 
+                <div class="form-group">
+                    <label for="image">Foto</label>
+                    <input type="text" name="image" id="image" class="form-control">
+                </div>
+                 
                  <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
                         Anadir director

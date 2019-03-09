@@ -11,16 +11,29 @@ class DirectorController extends Controller
 {
     public function getIndex(){
         //return response()->json(Director::All());
+        
         return view('director.index', array('directors'=>Director::All()));
     } 
     
     public function getShow($id){
+        $director = Director::findOrFail($id);
         $countries = Country::all();
-        return view('director.show', array('director'=>Director::findOrFail($id), 'countries'=>$countries));
+        /*foreach ($countries as $country){
+            if ($director->nacionality == $country->id) {
+                $coun = country(strtolower($country->iso));
+            }
+        }*/
+        //$flag = $coun->getFlag();
+        //return response()->json($flag);
+        
+        return view('director.show', array('director'=>$director,'countries'=>$countries));
     } 
     
     public function getCreate(){   
-        $countries = Country::all();
+        //$countries = Country::all();
+        $countries = countries();
+        
+        //return response()->json($countries);
         return view('director.create', array('countries'=>$countries));
     } 
     
@@ -30,7 +43,28 @@ class DirectorController extends Controller
         $director->name = $request->input('name');
         $director->lastname = $request->input('lastname');
         $director->bday = $request->input('bday');
-        $director->nacionality = $request->input('nacionality');
+        
+        $countries = Country::all();
+        
+        $exist = false;
+        foreach ($countries as $country){
+            if ($country->iso==$request->input('nacionality')){
+                $director->nacionality = $country->id;
+                $exist = true;
+            }
+        }
+        if ($exist == false){
+            $coun = country($request->input('nacionality'));
+            $country = new Country;
+            $country->name = $coun->getName();
+            $country->iso = $coun->getIsoAlpha2();
+            $country->flag = '';
+            $country->save();
+            //return response()->json($country);   
+            $director->nacionality = $country->id;
+        }
+        
+        $director->image = $request->input('image');
         $director->save();
         
         Notification::success('Se a anadido el director');
@@ -49,7 +83,28 @@ class DirectorController extends Controller
         $director->name = $request->input('name');
         $director->lastname = $request->input('lastname');
         $director->bday = $request->input('bday');
-        $director->nacionality = $request->input('nacionality');
+        
+        $countries = Country::all();
+        
+        $exist = false;
+        foreach ($countries as $country){
+            if ($country->iso==$request->input('nacionality')){
+                $director->nacionality = $country->id;
+                $exist = true;
+            }
+        }
+        if ($exist == false){
+            $coun = country($request->input('nacionality'));
+            $country = new Country;
+            $country->name = $coun->getName();
+            $country->iso = $coun->getIsoAlpha2();
+            $country->flag = '';
+            $country->save();
+            //return response()->json($country);   
+            $director->nacionality = $country->id;
+        }
+        
+        $director->image = $request->input('image');
         $director->save();
         
         Notification::success('Se a modificado el director');
