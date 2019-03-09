@@ -18,7 +18,7 @@
             <p><strong>Generos: </strong>
                 @foreach ( $genresMovie as $genre )
                     @foreach ( $genresAll as $genresAllOne )
-                        @if ($genre->id_genres == $genresAllOne->id) 
+                        @if ($genre->id_genre == $genresAllOne->id) 
                             <a href="{{url('/genre/show/')}}/{{ $genresAllOne->id }}">{{$genresAllOne->name}}</a>
                         @endif
                     @endforeach

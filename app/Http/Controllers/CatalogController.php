@@ -26,7 +26,7 @@ class CatalogController extends Controller
         $director = Director::findOrFail($movie->director);
         $country = Country::findOrFail($movie->country);
 
-        $genresMovie = Movie_Genre::where("id_movies", $movie->id)->get();
+        $genresMovie = Movie_Genre::where("id_movie", $movie->id)->get();
         $genresAll = Genre::All();
 
         $actorsMovie = Movie_Actor::where("id_movie", $movie->id)->get();
@@ -68,7 +68,7 @@ class CatalogController extends Controller
         $directors = Director::All();
         $countries = Country::All();
 
-        $genresMovie = Movie_Genre::where("id_movies", $movie->id)->get();
+        $genresMovie = Movie_Genre::where("id_movie", $movie->id)->get();
         $genresAll = Genre::All();
 
         $genres = array();
@@ -78,7 +78,7 @@ class CatalogController extends Controller
         foreach ($genresAll as $genre){    
             $exists = 0;
             foreach ($genresMovie as $genreMovie){ 
-                if ($genreMovie->id_genres == $genre->id) { /////////////////////////////////////////////////// cambiar cuando se cambie el migrate
+                if ($genreMovie->id_genre == $genre->id) { /////////////////////////////////////////////////// cambiar cuando se cambie el migrate
                     $exists=1;
                 }
             }
@@ -139,8 +139,8 @@ class CatalogController extends Controller
 
         foreach (request()->genre as $genreId){
             $genre = new Movie_Genre;
-            $genre->id_movies = $movie->id;
-            $genre->id_genres = $genreId;
+            $genre->id_movie = $movie->id;
+            $genre->id_genre = $genreId;
             $genre->save();
         }
         
@@ -160,11 +160,11 @@ class CatalogController extends Controller
         
         //dd(request()->all());
 
-        Movie_Genre::where("id_movies", $id)->delete();
+        Movie_Genre::where("id_movie", $id)->delete();
         foreach (request()->genre as $genreId){
             $genre = new Movie_Genre;
-            $genre->id_movies = $id;
-            $genre->id_genres = $genreId;
+            $genre->id_movie = $id;
+            $genre->id_genre = $genreId;
             $genre->save();
         }
 
@@ -214,7 +214,7 @@ class CatalogController extends Controller
     public function deleteMovie($id){ 
         $movie = Movie::findOrFail($id);
 
-        Movie_Genre::where("id_movies", $id)->delete();
+        Movie_Genre::where("id_movie", $id)->delete();
         Rent::where("id_movie", $id)->delete();
         Comment::where("id_movie", $id)->delete();
         Movie_Actor::where("id_movie", $id)->delete();
