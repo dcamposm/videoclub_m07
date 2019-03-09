@@ -22,7 +22,7 @@ class Country extends Model
 
     public function directors()
     {
-        return $this->hasMany('App\Director', 'id', 'nationality');
+        return $this->hasMany('App\Director', 'id', 'nacionality');
     }
 
     public function actors()

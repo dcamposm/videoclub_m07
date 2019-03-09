@@ -16,7 +16,7 @@ class GenreController extends Controller
     } 
     
     public function getShow($id){
-        $moviesGenre = Movie_Genre::where('id_genres', $id)->get();
+        $moviesGenre = Movie_Genre::where('id_genre', $id)->get();
         $movies = Movie::all();
         //return response()->json($moviesGenre);
         return view('genre.show', array('genre'=>Genre::findOrFail($id),'moviesGenre'=>$moviesGenre,'movies'=>$movies ));

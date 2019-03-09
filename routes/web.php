@@ -64,7 +64,9 @@ Route::group(['middleware' => 'auth'], function() {
     /*----------------Route director--------------*/
     Route::group(['prefix' => 'director'], function() {
         Route::get('/', 'DirectorController@getIndex');
-
+        
+        Route::get('export', 'DirectorController@export');
+        
         Route::get('show/{id}', 'DirectorController@getShow');
 
         Route::get('create', 'DirectorController@getCreate');

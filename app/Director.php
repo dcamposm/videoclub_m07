@@ -13,7 +13,7 @@ class Director extends Model
         'name',
         'lastname',
         'bday',
-        'nationality'
+        'nacionality'
     ];
 
     public function movie()
@@ -23,7 +23,7 @@ class Director extends Model
 
     public function countries()
     {
-        return $this->belongsTo('App\Country', 'nationality', 'id');
+        return $this->belongsTo('App\Country', 'nacionality', 'id');
     }
 }
 

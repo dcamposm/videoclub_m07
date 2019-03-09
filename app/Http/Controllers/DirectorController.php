@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Director;
 use App\Country;
 use Krucas\Notification\Facades\Notification;
+use App\Exports\DirectorsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DirectorController extends Controller
 {
@@ -14,6 +16,13 @@ class DirectorController extends Controller
         
         return view('director.index', array('directors'=>Director::All()));
     } 
+    
+    public function export() 
+    {
+        return Excel::download(new DirectorsExport, 'directores.xlsx');
+    }
+
+
     
     public function getShow($id){
         $director = Director::findOrFail($id);
@@ -73,8 +82,11 @@ class DirectorController extends Controller
     }
     
     public function getEdit($id){ 
-        $countries = Country::all();
-        return view('director.edit', array('director'=>Director::findOrFail($id), 'countries'=>$countries));
+        $director = Director::find($id);
+        $director->countries;   
+        //return response()->json($director);
+        $countries = countries();
+        return view('director.edit', array('director'=>$director, 'countries'=>$countries));
     }
     
     public function putEdit(Request $request, $id){ 
