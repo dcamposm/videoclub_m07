@@ -2,6 +2,7 @@
 
 @section('content')
 <br>
+<div class="row">
     <div class="col">
         <a href="{{ url('/director/create') }}" class="btn btn-primary">
             <span class="fas fa-address-book"></span>
@@ -14,6 +15,7 @@
             Exportar director
         </a>
     </div>
+</div>
 <br>
     <div class="row">
         
