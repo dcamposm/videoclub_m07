@@ -11,6 +11,7 @@ use App\Movie_Genre;
 use App\Actor;
 use App\Movie_Actor;
 use App\Comment;
+use App\Rent;
 use App\Client;
 use Krucas\Notification\Facades\Notification;
 
@@ -46,8 +47,19 @@ class CatalogController extends Controller
                                         ));
     } 
     
-    public function getCreate(){   
-        return view('catalog.create');
+    public function getCreate(){
+
+        $directors = Director::All();
+        $countries = Country::All();
+        $genres = Genre::All();
+        $actors = Actor::All();
+
+
+        return view('catalog.create', array(    'directors'=>$directors,
+                                                'countries'=>$countries,
+                                                'genres'=>$genres,
+                                                'actors'=>$actors
+                                        ));
     } 
     
     public function getEdit($id){
@@ -114,16 +126,32 @@ class CatalogController extends Controller
     }
     
     public function postCreate(Request $request){
-        
+
         $movie = new Movie;
         $movie->title = $request->input('title');
         $movie->year = $request->input('year');
+        $movie->time = $request->input('time');
         $movie->director = $request->input('director');
+        $movie->country = $request->input('country');
         $movie->poster = $request->input('poster');
         $movie->synopsis = $request->input('synopsis');
         $movie->save();
+
+        foreach (request()->genre as $genreId){
+            $genre = new Movie_Genre;
+            $genre->id_movies = $movie->id;
+            $genre->id_genres = $genreId;
+            $genre->save();
+        }
         
-        Notification::success('Success message');
+        foreach (request()->actor as $actorId){
+            $actor = new Movie_Actor;
+            $actor->id_movie = $movie->id;
+            $actor->id_actor = $actorId;
+            $actor->save();
+        }
+        
+        Notification::success('Película "'.$movie->title.'" creada corretamente.' );
 
         return redirect()->action('CatalogController@getCreate');
     } 
@@ -140,23 +168,25 @@ class CatalogController extends Controller
             $genre->save();
         }
 
-        Movie_Actor::where("id_movies", $id)->delete();
+        Movie_Actor::where("id_movie", $id)->delete();
         foreach (request()->actor as $actorId){
             $actor = new Movie_Actor;
-            $actor->id_movies = $id;
-            $actor->id_genres = $actorId;
+            $actor->id_movie = $id;
+            $actor->id_actor = $actorId;
             $actor->save();
         }
-/*
+
         $movie = Movie::findOrFail($id);
         $movie->title = $request->input('title');
         $movie->year = $request->input('year');
+        $movie->time = $request->input('time');
         $movie->director = $request->input('director');
+        $movie->country = $request->input('country');
         $movie->poster = $request->input('poster');
         $movie->synopsis = $request->input('synopsis');
-        $movie->save();*/
+        $movie->save();
         
-        Notification::success('Success message');
+        Notification::success('Película "'.$movie->title.'" modificada corretamente.' );
 
         return redirect()->action('CatalogController@getShow', ['id' => $id]);
     }
@@ -166,7 +196,7 @@ class CatalogController extends Controller
         $movie->rented = true;
         $movie->save();
         
-        Notification::success('Success');
+        Notification::success('Película "'.$movie->title.'" rentada corretamente.' );
         
         return redirect()->action('CatalogController@getShow', ['id' => $id]);
     } 
@@ -176,15 +206,21 @@ class CatalogController extends Controller
         $movie->rented = false;
         $movie->save();
         
-        Notification::success('Success message');
+        Notification::success('Película "'.$movie->title.'" devuelta corretamente.' );
         
         return redirect()->action('CatalogController@getShow', ['id' => $id]);
     } 
     
     public function deleteMovie($id){ 
+        $movie = Movie::findOrFail($id);
+
+        Movie_Genre::where("id_movies", $id)->delete();
+        Rent::where("id_movie", $id)->delete();
+        Comment::where("id_movie", $id)->delete();
+        Movie_Actor::where("id_movie", $id)->delete();
         Movie::findOrFail($id)->delete();
         
-        Notification::success('Success message');
+        Notification::success('Película "'.$movie->title.'" eliminada corretamente.' );
         
         return redirect()->action('CatalogController@getIndex');
     }
