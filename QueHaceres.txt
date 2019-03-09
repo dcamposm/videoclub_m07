@@ -13,18 +13,6 @@ Albert
 		movie_actors
 
 Denis
-	tablas de:
-		rents
-		coments
-		clients
-		movies
-
-
-QueHaceres generales:
-	- migrations (done)
-	- seeds (done)
-	- models (done)
-	- controladores
-	- vistas
+	- migrate movie_actor: que character pueda ser nulo 
 
 	SET FOREIGN_KEY_CHECKS=0
