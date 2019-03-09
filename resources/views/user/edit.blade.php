@@ -6,7 +6,7 @@
         <div class="offset-md-3 col-md-6">
            <div class="card">
               <div class="card-header text-center">
-                 Modificar actor
+                 Modificar usuario
               </div>
               <div class="card-body" style="padding:30px">
 
@@ -18,27 +18,27 @@
 
                  <div class="form-group">
                     <label for="name">Nombre</label>
-                    <input type="text" name="name" id="name" class="form-control" value="{{$actor->name}}">
+                    <input type="text" name="name" id="name" class="form-control" value="{{$user->name}}">
                  </div>
 
                  <div class="form-group">
-                    <label for="lastname">Apellido</label>
-                    <input type="text" name="lastname" id="lastname" class="form-control" value="{{$actor->lastname}}">
+                    <label for="email">Mail</label>
+                    <input type="email" name="email" id="email" class="form-control" value="{{$user->email}}">
                  </div>
 
                  <div class="form-group">
-                    <label for="bday">Fecha de nacimiento</label>
-                    <input type="text" name="bday" id="bday" class="form-control" value="{{$actor->bday}}">
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" id="password" class="form-control" value="{{$user->password}}">
                  </div>
 
                  <div class="form-group">
-                    <label for="nationality">Nacionalidad</label>
-                    <select name="nationality" id="nationality" class="form-control">
-                        @foreach ($countries as $country)
-                                @if ($country->id === $actor->nationality)
-                                <option value="{{$country->id}}" selected>{{$country->name}}</option>
+                    <label for="rol">Rol</label>
+                    <select name="rol" id="rol" class="form-control">
+                        @foreach ($rols as $rol)
+                                @if ($rol->id === $user->rol)
+                                <option value="{{$rol->id}}" selected>{{$rol->name}}</option>
                                 @else
-                                <option value="{{$country->id}}">{{$country->name}}</option>
+                                <option value="{{$rol->id}}">{{$rol->name}}</option>
                                 @endif
                         @endforeach
                     </select>
@@ -46,7 +46,7 @@
 
                  <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
-                        Modificar actor
+                        Modificar usuario
                     </button>
                  </div>
 

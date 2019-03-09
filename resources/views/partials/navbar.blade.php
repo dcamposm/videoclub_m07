@@ -16,6 +16,12 @@
                         </a>
                     </li>
                     <li>
+                        <a class="nav-link" href="{{url('/user')}}">
+                            <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
+                            Usuarios
+                        </a>
+                    </li>
+                    <li>
                         <a class="nav-link" href="{{url('/actor')}}">
                             <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
                             Actores

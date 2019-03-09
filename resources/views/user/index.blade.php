@@ -3,21 +3,22 @@
 @section('content')
 <br>
     <div>
-        <a href="{{ url('/actor/create') }}" class="btn btn-primary">
+        <a href="{{ url('/user/create') }}" class="btn btn-primary">
             <span class="fas fa-address-book"></span>
-            Añadir actor
+            Añadir usuario
         </a>
     </div>
 <br>
 
     <div class="row">
 
-    @foreach( $actor as $actor )
+    @foreach( $user as $user )
     <div class="col-xs-6 col-sm-4 col-md-3 text-center">
-
-        <a href="{{ url('/actor/show/' . $actor->id ) }}">
+        
+        <h4>{{$user->name}}</h4>
+        <a href="{{ url('/user/show/' . $user->id ) }}">
             <h4 style="min-height:45px;margin:5px 0 10px 0">
-                {{$actor->name}} {{$actor->lastname}}
+                {{$user->email}}
             </h4>
         </a>
 

@@ -5,7 +5,7 @@
     <div>
         <a href="{{ url('/director/create') }}" class="btn btn-primary">
             <span class="fas fa-address-book"></span>
-            Anadir director
+            Añadir director
         </a>
     </div>
 <br>

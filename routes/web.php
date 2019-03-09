@@ -77,6 +77,22 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::delete('delete/{id}', 'DirectorController@deleteDirector');
     });
+    /*----------------Route user--------------*/
+    Route::group(['prefix' => 'user'], function() {
+        Route::get('/', 'UserController@getIndex');
+
+        Route::get('show/{id}', 'UserController@getShow');
+
+        Route::get('create', 'UserController@getCreate');
+        
+        Route::post('create', 'UserController@postCreate');
+
+        Route::get('edit/{id}', 'UserController@getEdit');
+        
+        Route::put('edit/{id}', 'UserController@putEdit');
+
+        Route::delete('delete/{id}', 'UserController@deleteUser');
+    });
     /*----------------Route genre--------------*/
     Route::group(['prefix' => 'genre'], function() {
         Route::get('/', 'GenreController@getIndex');
