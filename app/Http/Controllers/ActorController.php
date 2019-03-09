@@ -43,7 +43,7 @@ class ActorController extends Controller
         $actor->nationality = $request->input('nationality');
         $actor->save();
         
-        Notification::success('Success message');
+        Notification::success('Actor creado correctamente');
 
         return redirect()->action('ActorController@getCreate');
     } 
@@ -58,7 +58,7 @@ class ActorController extends Controller
         $actor->nationality = $request->input('nationality');
         $actor->save();
         
-        Notification::success('Success message');
+        Notification::success('Actor modificado correctamente');
 
         return redirect()->action('ActorController@getShow', ['id' => $id]);
     }
@@ -66,7 +66,7 @@ class ActorController extends Controller
     public function deleteActor($id){ 
         Actor::findOrFail($id)->delete();
         
-        Notification::success('Success message');
+        Notification::success('Actor eliminado correctamente');
         
         return redirect()->action('ActorController@getIndex');
     }
