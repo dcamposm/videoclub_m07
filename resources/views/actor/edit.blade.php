@@ -40,7 +40,7 @@
                     <label for="nationality">Nacionalidad</label>
                     <select name="nationality" id="nationality" class="form-control">
                         @foreach ($countries as $country)
-                                <option value="{{ $country['iso_3166_1_alpha2'] }}" {{ $actor->nationality == $country['id'] ? 'selected' : ''}}>{{ $country['name'] }}</option>
+                                <option value="{{ $country['iso_3166_1_alpha2'] }}" {{ $actor->nationality == $country['iso_3166_1_alpha2'] ? 'selected' : ''}}>{{ $country['name'] }}</option>
                         @endforeach
                     </select>
                  </div>
