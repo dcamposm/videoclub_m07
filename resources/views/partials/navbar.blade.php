@@ -15,15 +15,15 @@
                             Películas
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item {{  Request::is('user') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('/user')}}">
-                            <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
+                            <span class="fas fa-user" aria-hidden="true"></span>
                             Usuarios
                         </a>
                     </li>
-                    <li>
+                    <li class="nav-item {{  Request::is('actor') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('/actor')}}">
-                            <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
+                            <span class="fas fa-user-tie" aria-hidden="true"></span>
                             Actores
                         </a>
                     </li>
