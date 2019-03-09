@@ -124,6 +124,22 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::delete('delete/{id}', 'GenreController@deleteGenre');
     });
+    /*----------------Route client--------------*/
+    Route::group(['prefix' => 'client'], function() {
+        Route::get('/', 'ClientController@getIndex');
+
+        Route::get('show/{id}', 'ClientController@getShow');
+
+        Route::get('create', 'ClientController@getCreate');
+        
+        Route::post('create', 'ClientController@postCreate');
+
+        Route::get('edit/{id}', 'ClientController@getEdit');
+        
+        Route::put('edit/{id}', 'ClientController@putEdit');
+
+        Route::delete('delete/{id}', 'ClientController@deleteClient');
+    });
 });
 
 Auth::routes();

@@ -4,7 +4,7 @@
 <br>
     <div>
         <a href="{{ url('/user/create') }}" class="btn btn-primary">
-            <span class="fas fa-address-book"></span>
+            <span class="fas fa-user-cog"></span>
             Añadir usuario
         </a>
     </div>

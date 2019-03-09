@@ -4,7 +4,7 @@
 <br>
     <div>
         <a href="{{ url('/actor/create') }}" class="btn btn-primary">
-            <span class="fas fa-address-book"></span>
+            <span class="fas fa-user-tie"></span>
             Añadir actor
         </a>
     </div>

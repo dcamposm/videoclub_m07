@@ -15,10 +15,10 @@
                             Películas
                         </a>
                     </li>
-                    <li class="nav-item {{  Request::is('user') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{url('/user')}}">
-                            <span class="fas fa-user" aria-hidden="true"></span>
-                            Usuarios
+                   <li class="nav-item {{  Request::is('director') ? 'active' : ''}}">
+                        <a class="nav-link" href="{{url('/director')}}">
+                            <span class="fas fa-address-book" aria-hidden="true"></span> 
+                            Directores
                         </a>
                     </li>
                     <li class="nav-item {{  Request::is('actor') ? 'active' : ''}}">
@@ -27,16 +27,22 @@
                             Actores
                         </a>
                     </li>
-                    <li class="nav-item {{  Request::is('director') ? 'active' : ''}}">
-                        <a class="nav-link" href="{{url('/director')}}">
-                            <span class="fas fa-address-book" aria-hidden="true"></span> 
-                            Directores
-                        </a>
-                    </li>
                     <li class="nav-item {{  Request::is('genre') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('/genre')}}">
                             <span class="fas fa-film" aria-hidden="true"></span> 
-                            Generos
+                            Géneros
+                        </a>
+                    </li>
+                    <li class="nav-item {{  Request::is('user') ? 'active' : ''}}">
+                        <a class="nav-link" href="{{url('/user')}}">
+                            <span class="fas fa-user-cog" aria-hidden="true"></span>
+                            Usuarios
+                        </a>
+                    </li>
+                    <li class="nav-item {{  Request::is('client') ? 'active' : ''}}">
+                        <a class="nav-link" href="{{url('/client')}}">
+                            <span class="fas fa-user" aria-hidden="true"></span>
+                            Clientes
                         </a>
                     </li>
                 </ul>
