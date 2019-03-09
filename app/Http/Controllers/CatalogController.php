@@ -11,6 +11,7 @@ use App\Movie_Genre;
 use App\Actor;
 use App\Movie_Actor;
 use App\Comment;
+use App\Rent;
 use App\Client;
 use Krucas\Notification\Facades\Notification;
 
@@ -126,20 +127,6 @@ class CatalogController extends Controller
     
     public function postCreate(Request $request){
 
-        foreach (request()->genre as $genreId){
-            $genre = new Movie_Genre;
-            $genre->id_movies = $id;
-            $genre->id_genres = $genreId;
-            $genre->save();
-        }
-        
-        foreach (request()->actor as $actorId){
-            $actor = new Movie_Actor;
-            $actor->id_movie = $id;
-            $actor->id_actor = $actorId;
-            $actor->save();
-        }
-
         $movie = new Movie;
         $movie->title = $request->input('title');
         $movie->year = $request->input('year');
@@ -149,6 +136,20 @@ class CatalogController extends Controller
         $movie->poster = $request->input('poster');
         $movie->synopsis = $request->input('synopsis');
         $movie->save();
+
+        foreach (request()->genre as $genreId){
+            $genre = new Movie_Genre;
+            $genre->id_movies = $movie->id;
+            $genre->id_genres = $genreId;
+            $genre->save();
+        }
+        
+        foreach (request()->actor as $actorId){
+            $actor = new Movie_Actor;
+            $actor->id_movie = $movie->id;
+            $actor->id_actor = $actorId;
+            $actor->save();
+        }
         
         Notification::success('Película "'.$movie->title.'" creada corretamente.' );
 
@@ -211,6 +212,12 @@ class CatalogController extends Controller
     } 
     
     public function deleteMovie($id){ 
+        $movie = Movie::findOrFail($id);
+
+        Movie_Genre::where("id_movies", $id)->delete();
+        Rent::where("id_movie", $id)->delete();
+        Comment::where("id_movie", $id)->delete();
+        Movie_Actor::where("id_movie", $id)->delete();
         Movie::findOrFail($id)->delete();
         
         Notification::success('Película "'.$movie->title.'" eliminada corretamente.' );

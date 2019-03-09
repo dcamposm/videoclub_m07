@@ -11,8 +11,6 @@
               <div class="card-body" style="padding:30px">
 
                 <form method="POST">
-                 
-                 {{method_field('PUT')}}
                     
                  {{ csrf_field() }}
 
@@ -94,7 +92,7 @@
 
                     <div class="form-group text-center">
                         <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
-                            Modificar pelicula
+                            Crear pelicula
                         </button>
                     </div>
 

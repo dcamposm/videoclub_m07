@@ -5,7 +5,7 @@
     <div>
         <a href="{{ url('/catalog/create') }}" class="btn btn-primary">
             <span class="fas fa-video"></span>
-            Añadir Película
+            Añadir película
         </a>
     </div>
 <br>
