@@ -30,6 +30,11 @@
                  </div>
 
                  <div class="form-group">
+                    <label for="image">Imagen</label>
+                    <input type="text" name="image" id="image" class="form-control">
+                 </div>
+
+                 <div class="form-group">
                     <label for="nationality">Nacionalidad</label>
                     <select name="nationality" id="nationality" class="form-control">
                         @foreach ($countries as $country)

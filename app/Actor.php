@@ -13,7 +13,9 @@ class Actor extends Model
         'name',
         'lastname',
         'bday',
+        'image',
         'nationality'
+
     ];
 
     public function movie_actor()

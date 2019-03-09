@@ -35,6 +35,7 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->password = $request->input('password');
         $user->rol = $request->input('rol');
+        $user->image = $request->input('image');
         $user->save();
         
         Notification::success('Success message');
@@ -49,6 +50,7 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->password = $request->input('password');
         $user->rol = $request->input('rol');
+        $user->image = $request->input('image');
         $user->save();
         
         Notification::success('Success message');

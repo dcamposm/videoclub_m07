@@ -39,6 +39,7 @@ class ActorController extends Controller
         $actor->name = $request->input('name');
         $actor->lastname = $request->input('lastname');
         $actor->bday = $request->input('bday');
+        $actor->image = $request->input('image');
         $actor->nationality = $request->input('nationality');
         $actor->save();
         
@@ -53,6 +54,7 @@ class ActorController extends Controller
         $actor->name = $request->input('name');
         $actor->lastname = $request->input('lastname');
         $actor->bday = $request->input('bday');
+        $actor->image = $request->input('image');
         $actor->nationality = $request->input('nationality');
         $actor->save();
         
