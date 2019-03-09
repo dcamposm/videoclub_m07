@@ -29,8 +29,10 @@ class ActorController extends Controller
     } 
     
     public function getEdit($id){ 
-        $countries = Country::all();
-        return view('actor.edit', array('actor'=>Actor::findOrFail($id), 'countries'=>$countries));
+        $actor = Actor::find($id);
+        $actor->countries;
+        $countries = Countries();
+        return view('actor.edit', array('actor'=>$actor, 'countries'=>$countries));
     }
 
     public function postCreate(Request $request){
