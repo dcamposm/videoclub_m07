@@ -35,9 +35,10 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->password = $request->input('password');
         $user->rol = $request->input('rol');
+        $user->image = $request->input('image');
         $user->save();
         
-        Notification::success('Success message');
+        Notification::success('Usuario creado correctamente');
 
         return redirect()->action('UserController@getCreate');
     } 
@@ -49,9 +50,10 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->password = $request->input('password');
         $user->rol = $request->input('rol');
+        $user->image = $request->input('image');
         $user->save();
         
-        Notification::success('Success message');
+        Notification::success('Usuario modificado correctamente');
 
         return redirect()->action('UserController@getShow', ['id' => $id]);
     }
@@ -59,7 +61,7 @@ class UserController extends Controller
     public function deleteUser($id){ 
         User::findOrFail($id)->delete();
         
-        Notification::success('Success message');
+        Notification::success('Usuario eliminado correctamente');
         
         return redirect()->action('UserController@getIndex');
     }

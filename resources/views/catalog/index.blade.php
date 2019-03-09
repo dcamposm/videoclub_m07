@@ -1,6 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
+<br>
+    <div>
+        <a href="{{ url('/catalog/create') }}" class="btn btn-primary">
+            <span class="fas fa-video"></span>
+            Añadir película
+        </a>
+    </div>
+<br>
 
     <div class="row">
 

@@ -24,7 +24,7 @@ class ActorController extends Controller
     } 
 
     public function getCreate(){   
-        $countries = Country::all();
+        $countries = Countries();
         return view('actor.create', array('countries'=>$countries));
     } 
     
@@ -39,10 +39,29 @@ class ActorController extends Controller
         $actor->name = $request->input('name');
         $actor->lastname = $request->input('lastname');
         $actor->bday = $request->input('bday');
-        $actor->nationality = $request->input('nationality');
+        $actor->image = $request->input('image');
+
+        $exist = false;
+        foreach ($countries as $country){
+            if ($country->iso==$request->input('nationality')){
+                $actor->nationality = $country->id;
+                $exist = true;
+            }
+        }
+        if ($exist == false){
+            $coun = country($request->input('nationality'));
+            $country = new Country;
+            $country->name = $coun->getName();
+            $country->iso = $coun->getIsoAlpha2();
+            $country->flag = '';
+            $country->save();
+            //return response()->json($country);   
+            $actor->nationality = $country->id;
+        }
+
         $actor->save();
         
-        Notification::success('Success message');
+        Notification::success('Actor creado correctamente');
 
         return redirect()->action('ActorController@getCreate');
     } 
@@ -53,10 +72,31 @@ class ActorController extends Controller
         $actor->name = $request->input('name');
         $actor->lastname = $request->input('lastname');
         $actor->bday = $request->input('bday');
+
+        $countries = Country::all();
+        
+        $exist = false;
+        foreach ($countries as $country){
+            if ($country->iso==$request->input('nationality')){
+                $actor->nationality = $country->id;
+                $exist = true;
+            }
+        }
+        if ($exist == false){
+            $coun = country($request->input('nationality'));
+            $country = new Country;
+            $country->name = $coun->getName();
+            $country->iso = $coun->getIsoAlpha2();
+            $country->flag = '';
+            $country->save(); 
+            $actor->nationality = $country->id;
+        }
+
+        $actor->image = $request->input('image');
         $actor->nationality = $request->input('nationality');
         $actor->save();
         
-        Notification::success('Success message');
+        Notification::success('Actor modificado correctamente');
 
         return redirect()->action('ActorController@getShow', ['id' => $id]);
     }
@@ -64,7 +104,7 @@ class ActorController extends Controller
     public function deleteActor($id){ 
         Actor::findOrFail($id)->delete();
         
-        Notification::success('Success message');
+        Notification::success('Actor eliminado correctamente');
         
         return redirect()->action('ActorController@getIndex');
     }

@@ -50,6 +50,7 @@ class DatabaseSeeder extends Seeder
         $user->email = 'deme@dem.dem';
         $user->password = bcrypt('demcam');
         $user->rol = 1;
+        $user->image = "/img/user.jpg";
         $user->save();
         
         $user = new User;
@@ -57,6 +58,7 @@ class DatabaseSeeder extends Seeder
         $user->email = 'alb@alb.alb';
         $user->password = bcrypt('albmar');
         $user->rol = 1;
+        $user->image = "/img/user.jpg";
         $user->save();
         
         $user = new User;
@@ -64,6 +66,7 @@ class DatabaseSeeder extends Seeder
         $user->email = 'denis@den.den';
         $user->password = bcrypt('Admin1234-');
         $user->rol = 1;
+        $user->image = "/img/user.jpg";
         $user->save();
     }
     

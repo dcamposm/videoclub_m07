@@ -11,8 +11,8 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item {{ Request::is('catalog') && ! Request::is('catalog/create')? 'active' : ''}}">
                         <a class="nav-link" href="{{url('/catalog')}}">
-                            <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
-                            Catálogo
+                            <span class="fas fa-video" aria-hidden="true"></span> 
+                            Películas
                         </a>
                     </li>
                     <li>

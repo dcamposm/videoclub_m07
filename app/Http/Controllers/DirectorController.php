@@ -112,7 +112,6 @@ class DirectorController extends Controller
             $country->iso = $coun->getIsoAlpha2();
             $country->flag = '';
             $country->save();
-            //return response()->json($country);   
             $director->nacionality = $country->id;
         }
         

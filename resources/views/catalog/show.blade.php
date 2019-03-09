@@ -6,7 +6,7 @@
 
         <div class="col-sm-4">
 
-            <img src="{{$pelicula->poster}}" style="height:500px"/>
+            <img src="{{$pelicula->poster}}" class="col"/>
 
         </div>
         <div class="col-sm-8">
@@ -18,7 +18,7 @@
             <p><strong>Generos: </strong>
                 @foreach ( $genresMovie as $genre )
                     @foreach ( $genresAll as $genresAllOne )
-                        @if ($genre->id_genres == $genresAllOne->id) 
+                        @if ($genre->id_genre == $genresAllOne->id) 
                             <a href="{{url('/genre/show/')}}/{{ $genresAllOne->id }}">{{$genresAllOne->name}}</a>
                         @endif
                     @endforeach

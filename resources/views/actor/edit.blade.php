@@ -32,14 +32,15 @@
                  </div>
 
                  <div class="form-group">
+                    <label for="image">Imagen</label>
+                    <input type="text" name="image" id="image" class="form-control"  value="{{$actor->image}}">
+                 </div>
+
+                 <div class="form-group">
                     <label for="nationality">Nacionalidad</label>
                     <select name="nationality" id="nationality" class="form-control">
                         @foreach ($countries as $country)
-                                @if ($country->id === $actor->nationality)
-                                <option value="{{$country->id}}" selected>{{$country->name}}</option>
-                                @else
-                                <option value="{{$country->id}}">{{$country->name}}</option>
-                                @endif
+                                <option value="{{ $country['id'] }}" {{ $actor->nationality == $country['id'] ? 'selected' : ''}}>{{ $country['name'] }}</option>
                         @endforeach
                     </select>
                  </div>

@@ -15,6 +15,7 @@
     @foreach( $user as $user )
     <div class="col-xs-6 col-sm-4 col-md-3 text-center">
         
+        <img src="{{$user->image}}" style="height:200px"/>
         <h4>{{$user->name}}</h4>
         <a href="{{ url('/user/show/' . $user->id ) }}">
             <h4 style="min-height:45px;margin:5px 0 10px 0">
