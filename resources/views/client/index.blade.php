@@ -16,7 +16,6 @@
           <tr>
             <th scope="col">Dni</th>
             <th scope="col">Cliente</th>
-            <th scope="col">Apellido</th>
             <th scope="col">Actiones</th>
           </tr>
         </thead>
@@ -24,8 +23,7 @@
         @foreach( $client as $client )
             <tr>
                 <th><a href="{{ url('/client/show/' . $client->id ) }}">{{$client->dni}}</a></th>
-                <td>{{$client->name}}</td>
-                <td>{{$client->lastname}}</td>
+                <td>{{$client->name}} {{$client->lastname}}</td>
                 <td>
                     <a href="{{ url('/client/edit')}}/{{ $client->id }} }}" class="btn btn-warning">
                         <span class="glyphicon glyphicon-list"></span> 
@@ -34,7 +32,7 @@
                     <form action="{{action('ClientController@deleteClient', $client->id)}}" method="POST" style="display:inline">
                         {{ method_field('DELETE ') }}
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-outline-danger" style="display:inline">
+                        <button type="submit" class="btn btn-danger" style="display:inline">
                             Eliminar
                         </button>
                     </form>

@@ -40,7 +40,7 @@
                     method="POST" style="display:inline">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
-                    <button type="submit" class="btn btn-primary" style="display:inline">
+                    <button type="submit" class="btn btn-outline-primary" style="display:inline">
                         Alquilar película
                     </button>
                 </form>
@@ -50,7 +50,7 @@
                     method="POST" style="display:inline">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
-                    <button type="submit" class="btn btn-danger" style="display:inline">
+                    <button type="submit" class="btn btn-outline-danger" style="display:inline">
                         Devolver película
                     </button>
                 </form>
@@ -59,7 +59,7 @@
                     method="POST" style="display:inline">
                     {{ method_field('DELETE ') }}
                     {{ csrf_field() }}
-                    <button type="submit" class="btn btn-outline-danger" style="display:inline">
+                    <button type="submit" class="btn btn-danger" style="display:inline">
                         Eliminar película
                     </button>
                 </form>
@@ -84,7 +84,7 @@
                             @if ($comment->id_client == $client->id) 
                                 <div class="card-body row">
                                     <div class="col-sm-3">
-                                        <p><strong>Cliente: </strong> {{$client->name}} {{$client->lastname}}</p>
+                                        <p><strong>Cliente: </strong> <a href="{{url('/client/show/')}}/{{ $client->id }}">{{$client->name}} {{$client->lastname}}</a></p>
                                         <p><strong>Valoración: </strong>
                                             @for ($i = 0; $i < $comment->rate_movie; $i++)
                                                 <img src="/img/starRate.png" width="20">

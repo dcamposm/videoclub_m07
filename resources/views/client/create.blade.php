@@ -31,12 +31,16 @@
 
                  <div class="form-group">
                     <label for="bday">Fecha de nacimiento</label>
-                    <input type="text" name="bday" id="bday" class="form-control">
+                    <input type="date" name="bday" id="bday" class="form-control">
                  </div>
 
                  <div class="form-group">
                     <label for="nacionality">Nacionalidad</label>
-                    <input type="text" name="nacionality" id="nacionality" class="form-control">
+                    <select class="form-control" name="nacionality">
+                        @foreach ($countries as $country)
+                            <option value="{{ $country['iso_3166_1_alpha2'] }}">{{ $country['name'] }}</option>
+                        @endforeach
+                    </select>
                  </div>
 
                  <div class="form-group">
@@ -56,6 +60,5 @@
            </div>
         </div>
      </div>
-
 
 @stop

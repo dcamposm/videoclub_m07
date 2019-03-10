@@ -78,7 +78,7 @@ class CatalogController extends Controller
         foreach ($genresAll as $genre){    
             $exists = 0;
             foreach ($genresMovie as $genreMovie){ 
-                if ($genreMovie->id_genre == $genre->id) { /////////////////////////////////////////////////// cambiar cuando se cambie el migrate
+                if ($genreMovie->id_genre == $genre->id) {
                     $exists=1;
                 }
             }

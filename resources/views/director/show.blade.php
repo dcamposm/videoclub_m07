@@ -22,7 +22,7 @@
                 method="POST" style="display:inline">
                 {{ method_field('DELETE ') }}
                 {{ csrf_field() }}
-                <button type="submit" class="btn btn-outline-danger" style="display:inline">
+                <button type="submit" class="btn btn-danger" style="display:inline">
                     Eliminar director
                 </button>
             </form>

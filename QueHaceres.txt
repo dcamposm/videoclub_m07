@@ -1,17 +1,5 @@
-Deme
-	tablas de:
-		movie_genre
-		genres
-		users
-		rols
-
-Albert
-	tablas de:
-		director
-		countries
-		actors
-		movie_actors
-
-Denis
-
-	SET FOREIGN_KEY_CHECKS=0
+QUE HACERES:
+	- Director	vista: show - ver que peliculas ha dirigido (como en actores)
+	- Generos	vista: show - ver peliculas del genero (como en actores)
+	- Cliente	vista: edit - que aparezca por defecto el pais
+	- Plugin excel : añadirlo en las vistas - peliculas y actores (generos? usuarios?, clientes?)

@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movie;
-use App\Client;
 use App\Comment;
+use App\Client;
 use Krucas\Notification\Facades\Notification;
 
 class CommentController extends Controller
@@ -29,12 +29,14 @@ class CommentController extends Controller
 	        	['id_movie','=',$id_movie],
 	        	['id_client','=',$id_client],
         	])->get();
-        $movies = Movie::All();
-        $clients = Client::All();
+        $movie = Movie::findOrFail($id_movie);
+        $client = Client::findOrFail($id_client);
+        $date = date("Y-m-d");
 
-        return view('comment.create', array(    'comment'=>$comment,
-                                                'movies'=>$movies,
-                                                'clients'=>$clients
+    	return view('comment.edit', array( 	'comment'=>$comment,
+                                            'movie'=>$movie,
+                                            'client'=>$client,
+                                            'date'=>$date
                                         ));
     }    
 
@@ -56,7 +58,24 @@ class CommentController extends Controller
         Notification::success('Comentario añadido corretamente.' );
 
         return redirect('catalog/show/'.$id_movie);
-    } 
+    }
+    
+    public function putEdit($id_movie, $id_client, Request $request){
+
+        $comment = Comment::where([
+	        	['id_movie','=',$id_movie],
+	        	['id_client','=',$id_client],
+	       	])->first();
+        $comment->date_comment = date("Y-m-d");
+        $comment->rate_movie = $request->input('rate');
+        $comment->comment = $request->input('comment');
+        $comment->save();
+
+        Notification::success('Comentario modificado corretamente.' );
+
+        return redirect()->action('CatalogController@getShow', ['id' => $comment->id_movie]);
+
+    }
     
     public function deleteComment($id_movie, $id_client){ 
 
@@ -67,6 +86,6 @@ class CommentController extends Controller
         
         Notification::success('Comentario eliminado corretamente.' );
         
-        return redirect('catalog/show/'.$id_movie);
+        return redirect(url()->previous());
     }
 }

@@ -6,16 +6,16 @@
         <div class="offset-md-3 col-md-6">
            <div class="card">
               <div class="card-header text-center">
-                 Modificar cliente
+                 Añadir cliente
               </div>
               <div class="card-body" style="padding:30px">
 
                 <form method="POST">
                  
                  {{method_field('PUT')}}
-                    
-                 {{ csrf_field() }}
 
+                 {{ csrf_field() }}
+                  
                  <div class="form-group">
                     <label for="dni">Dni</label>
                     <input type="text" name="dni" id="dni" class="form-control" value="{{$client->dni}}">
@@ -33,12 +33,16 @@
 
                  <div class="form-group">
                     <label for="bday">Fecha de nacimiento</label>
-                    <input type="text" name="bday" id="bday" class="form-control" value="{{$client->bday}}">
+                    <input type="date" name="bday" id="bday" class="form-control" value="{{$client->bday}}">
                  </div>
 
                  <div class="form-group">
                     <label for="nacionality">Nacionalidad</label>
-                    <input type="text" name="nacionality" id="nacionality" class="form-control" value="{{$client->nacionality}}">
+                    <select class="form-control" name="nacionality">
+                        @foreach ($countries as $country)
+                            <option value="{{ $country['iso_3166_1_alpha2'] }}">{{ $country['name'] }}</option>
+                        @endforeach
+                    </select>
                  </div>
 
                  <div class="form-group">
@@ -48,7 +52,7 @@
 
                  <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
-                        Modificar cliente
+                        Añadir cliente
                     </button>
                  </div>
 
@@ -58,4 +62,5 @@
            </div>
         </div>
      </div>
+
 @stop
