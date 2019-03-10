@@ -48,15 +48,15 @@ Route::group(['middleware' => 'auth'], function() {
     /*----------------Route comments--------------*/
     Route::group(['prefix' => 'comment'], function() {;
 
-        Route::get('create', 'CommentsController@getCreate');
+        Route::get('create/{id_movie}', 'CommentController@getCreate');
         
-        Route::post('create', 'CommentsController@postCreate');
+        Route::post('create/{id_movie}', 'CommentController@postCreate');
 
-        Route::get('edit/{id}', 'CommentsController@getEdit');
+        Route::get('edit/{id_movie}/{id_client}', 'CommentController@getEdit');
         
-        Route::put('edit/{id}', 'CommentsController@putEdit');
+        Route::put('edit/{id_movie}/{id_client}', 'CommentController@putEdit');
         
-        Route::delete('delete/{id}', 'CommentsController@deleteComment');
+        Route::delete('delete/{id_movie}/{id_client}', 'CommentController@deleteComment');
     });
     /*----------------Route actor--------------*/
     Route::group(['prefix' => 'actor'], function() {

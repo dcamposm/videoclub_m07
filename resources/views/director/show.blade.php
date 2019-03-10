@@ -6,7 +6,7 @@
 
     <div class="col-sm-4">
 
-        <img class="col" src="{{$director->image}}" style="height:300px"/>
+        <img class="col" src="{{$director->image}}"/>
 
     </div>
     <div class="col-sm-8">

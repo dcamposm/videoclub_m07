@@ -70,7 +70,14 @@
             <div class="row" style="margin-top:40px">
                 <div class="card w-100">
                     <div class="card-header text-center">
-                        Comentarios
+                        <div class="row">
+                            <a class="btn btn-primary btn-sm col-2 ml-2" href="{{url('/comment/create')}}/{{ $pelicula->id }}" role="button">
+                                Añadir comentario
+                            </a>
+                            <span class="col">
+                                Comentarios
+                            </span>
+                        </div>
                     </div>
                     @foreach ( $CommentsMovie as $comment )
                         @foreach ( $clientsAll as $client )
@@ -83,13 +90,32 @@
                                                 <img src="/img/starRate.png" width="20">
                                             @endfor
                                         <p><strong>Data: </strong> {{$comment->date_comment}}</p>
+                                        <a class="btn btn-warning btn-sm col-9 ml-1" href="{{url('/comment/edit')}}/{{ $comment->id_movie }}/{{ $comment->id_client }}" role="button">
+                                            Editar comentario
+                                        </a>
+
+                                        <form action="{{action('CommentController@deleteComment', array($comment->id_movie, $comment->id_client))}}" 
+                                            method="POST" style="display:inline">
+                                            {{ method_field('DELETE ') }}
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-danger btn-sm col-2 ml-2" style="display:inline">
+                                                <span class="fas fa-trash"></span>
+                                            </button>
+                                        </form>
                                     </div>
                                     <div class="col-sm-9 ">
                                         <p><strong>Comentario: </strong> {{$comment->comment}}</p>
                                     </div>
                                 </div>
+
                             @endif
                         @endforeach
+
+                        @if (!$loop->last) 
+
+                            <hr>
+
+                        @endif
                     @endforeach
                 </div>
             </div>

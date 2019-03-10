@@ -156,24 +156,26 @@ class CatalogController extends Controller
         return redirect()->action('CatalogController@getCreate');
     } 
     
-    public function putEdit(Request $request, $id){ 
-        
-        //dd(request()->all());
+    public function putEdit(Request $request, $id){
 
         Movie_Genre::where("id_movie", $id)->delete();
-        foreach (request()->genre as $genreId){
-            $genre = new Movie_Genre;
-            $genre->id_movie = $id;
-            $genre->id_genre = $genreId;
-            $genre->save();
+        if (isset(request()->genre)) {
+            foreach (request()->genre as $genreId){
+                $genre = new Movie_Genre;
+                $genre->id_movie = $id;
+                $genre->id_genre = $genreId;
+                $genre->save();
+            }
         }
 
         Movie_Actor::where("id_movie", $id)->delete();
-        foreach (request()->actor as $actorId){
-            $actor = new Movie_Actor;
-            $actor->id_movie = $id;
-            $actor->id_actor = $actorId;
-            $actor->save();
+        if (isset(request()->actor)) {
+            foreach (request()->actor as $actorId){
+                $actor = new Movie_Actor;
+                $actor->id_movie = $id;
+                $actor->id_actor = $actorId;
+                $actor->save();
+            }
         }
 
         $movie = Movie::findOrFail($id);
