@@ -3,3 +3,5 @@ QUE HACERES:
 	- Generos	vista: show - ver peliculas del genero (como en actores)
 	- Cliente	vista: edit - que aparezca por defecto el pais
 	- Plugin excel : añadirlo en las vistas - peliculas y actores (generos? usuarios?, clientes?)
+
+	- Rellenar Seeds
