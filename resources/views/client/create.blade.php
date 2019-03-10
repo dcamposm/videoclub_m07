@@ -6,48 +6,47 @@
         <div class="offset-md-3 col-md-6">
            <div class="card">
               <div class="card-header text-center">
-                 Modificar actor
+                 Añadir cliente
               </div>
               <div class="card-body" style="padding:30px">
 
                 <form method="POST">
-                 
-                 {{method_field('PUT')}}
-                    
+
                  {{ csrf_field() }}
+                  
+                 <div class="form-group">
+                    <label for="dni">Dni</label>
+                    <input type="text" name="dni" id="dni" class="form-control">
+                 </div>
 
                  <div class="form-group">
                     <label for="name">Nombre</label>
-                    <input type="text" name="name" id="name" class="form-control" value="{{$actor->name}}">
+                    <input type="text" name="name" id="name" class="form-control">
                  </div>
 
                  <div class="form-group">
                     <label for="lastname">Apellido</label>
-                    <input type="text" name="lastname" id="lastname" class="form-control" value="{{$actor->lastname}}">
+                    <input type="text" name="lastname" id="lastname" class="form-control">
                  </div>
 
                  <div class="form-group">
                     <label for="bday">Fecha de nacimiento</label>
-                    <input type="text" name="bday" id="bday" class="form-control" value="{{$actor->bday}}">
+                    <input type="text" name="bday" id="bday" class="form-control">
                  </div>
 
                  <div class="form-group">
-                    <label for="image">Imagen</label>
-                    <input type="text" name="image" id="image" class="form-control"  value="{{$actor->image}}">
+                    <label for="nacionality">Nacionalidad</label>
+                    <input type="text" name="nacionality" id="nacionality" class="form-control">
                  </div>
 
                  <div class="form-group">
-                    <label for="nationality">Nacionalidad</label>
-                    <select name="nationality" id="nationality" class="form-control">
-                        @foreach ($countries as $country)
-                                <option value="{{ $country['iso_3166_1_alpha2'] }}" {{ $actor->countries->iso == $country['iso_3166_1_alpha2'] ? 'selected' : ''}}>{{ $country['name'] }}</option>
-                        @endforeach
-                    </select>
+                    <label for="address">Dirección</label>
+                    <input type="text" name="address" id="address" class="form-control">
                  </div>
 
                  <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
-                        Modificar actor
+                        Añadir cliente
                     </button>
                  </div>
 
@@ -57,4 +56,6 @@
            </div>
         </div>
      </div>
+
+
 @stop

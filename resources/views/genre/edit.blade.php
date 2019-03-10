@@ -6,7 +6,7 @@
         <div class="offset-md-3 col-md-6">
            <div class="card">
               <div class="card-header text-center">
-                 Modificar genero
+                 Modificar género
               </div>
               <div class="card-body" style="padding:30px">
 
@@ -22,13 +22,13 @@
                  </div>
 
                  <div class="form-group">
-                    <label for="description">Descripcion</label>
+                    <label for="description">Descripción</label>
                     <textarea name="description" id="description" class="form-control" rows="3">{{$genre->description}}</textarea>
                  </div>
 
                  <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary" style="padding:8px 100px;margin-top:25px;">
-                        Modificar genero
+                        Modificar género
                     </button>
                  </div>
 
